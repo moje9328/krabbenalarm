@@ -1,0 +1,3370 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+<title>Krabbenalarm – Pixelhafen</title>
+<meta name="description" content="Weich dem Krempel aus: Die kleine Krabbe Kalle in 30 Leveln und 5 Welten, mit 5 Bossen. Kostenlos, ohne Anmeldung, ohne Werbung.">
+<!-- App-Einstellungen, damit sich das Spiel auf dem Handy wie eine App verhält -->
+<link rel="manifest" href="manifest.webmanifest">
+<meta name="theme-color" content="#14151a">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Krabbenalarm">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png">
+<script>
+  // Nimmt Hell oder Dunkel von der Pixelhafen-Seite mit, falls dort etwas gewählt wurde
+  try {
+    const saved = localStorage.getItem('design');
+    if (saved === 'light' || saved === 'dark') document.documentElement.dataset.theme = saved;
+  } catch (error) {}
+</script>
+<style>
+  /* Schrift "Press Start 2P", Copyright 2012 The Press Start 2P Project Authors,
+     SIL Open Font License 1.1 (https://openfontlicense.org). Sie steckt direkt in dieser
+     Datei, damit das Spiel auch offline und ohne Verbindung zu Google richtig aussieht. */
+  @font-face {
+    font-family: 'Press Start 2P';
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url(data:font/woff2;base64,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) format('woff2');
+  }
+
+  /* Dieselben Farben wie auf der Pixelhafen-Seite */
+  :root {
+    color-scheme: dark;
+    --bg: #14151a;
+    --surface: #1c1e25;
+    --surface-2: #272a33;
+    --line: #363a46;
+    --text: #ece9e2;
+    --muted: #b1b0ae;
+    --accent: #f2b84b;
+    --accent-edge: #a9781f;
+    --on-accent: #1d1505;
+    --retro: 'Press Start 2P', 'Courier New', monospace;
+    --body: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  }
+  @media (prefers-color-scheme: light) {
+    :root:not([data-theme="dark"]) {
+      color-scheme: light;
+      --bg: #f4f0e6;
+      --surface: #fdfbf5;
+      --surface-2: #ebe6d8;
+      --line: #d4cdbb;
+      --text: #24232a;
+      --muted: #5c5a63;
+      --accent: #8a5600;
+      --accent-edge: #b58628;
+    }
+  }
+  :root[data-theme="light"] {
+    color-scheme: light;
+    --bg: #f4f0e6;
+    --surface: #fdfbf5;
+    --surface-2: #ebe6d8;
+    --line: #d4cdbb;
+    --text: #24232a;
+    --muted: #5c5a63;
+    --accent: #8a5600;
+    --accent-edge: #b58628;
+  }
+
+  * { box-sizing: border-box; }
+  html, body { height: 100%; margin: 0; overflow: hidden; overscroll-behavior: none; background: var(--bg); touch-action: none; }
+  body {
+    position: fixed;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
+    color: var(--text);
+    font: 16px/1.5 var(--body);
+    -webkit-font-smoothing: antialiased;
+    /* Kein Markieren und kein Lupen-Menü beim Spielen mit dem Finger */
+    -webkit-user-select: none;
+    user-select: none;
+    -webkit-touch-callout: none;
+    -webkit-tap-highlight-color: transparent;
+  }
+  :focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; border-radius: 6px; }
+  [hidden] { display: none !important; }
+
+  /* Anzeige oben: Punkte, Level, nächstes Ziel, Knöpfe */
+  #hud {
+    flex: none;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    width: 100%;
+    max-width: 560px;
+    min-height: 56px;
+    margin: 0 auto;
+    padding: 4px 8px 4px 14px;
+  }
+  .wert { display: grid; flex: none; gap: 5px; }
+  .wert small { overflow: hidden; color: var(--muted); font: 8px/1 var(--retro); white-space: nowrap; }
+  .wert b { font: 400 13px/1 var(--retro); white-space: nowrap; }
+  #punkte { color: var(--accent); }
+  #zielBox { margin-right: auto; }
+  .knoepfchen { display: flex; flex: none; gap: 6px; }
+  .rund {
+    display: grid;
+    place-items: center;
+    flex: none;
+    width: 44px;
+    height: 44px;
+    padding: 0;
+    color: var(--text);
+    cursor: pointer;
+    background: transparent;
+    border: 1px solid var(--line);
+    border-radius: 10px;
+  }
+  .rund:hover { background: var(--surface-2); }
+  .rund svg { width: 18px; height: 18px; }
+  #tonAus { display: none; }
+  .stumm #tonAn { display: none; }
+  .stumm #tonAus { display: block; }
+
+  /* Spielfeld: wie ein Bildschirm in der Konsole, auch im hellen Design */
+  #feld { position: relative; flex: 1 1 0; min-width: 0; min-height: 0; display: flex; flex-direction: column; align-items: center; }
+  canvas#bild { display: block; flex: none; background: #0a0b10; border-radius: 12px; box-shadow: 0 0 0 1px var(--line); }
+
+  /* Fenster für Start, Pause und Ende */
+  #fenster {
+    position: fixed;
+    inset: 0;
+    z-index: 5;
+    display: flex;
+    padding: max(12px, env(safe-area-inset-top)) max(12px, env(safe-area-inset-right)) max(12px, env(safe-area-inset-bottom)) max(12px, env(safe-area-inset-left));
+    overflow-y: auto;
+    background: rgba(10, 12, 18, 0.62);
+    touch-action: pan-y;
+  }
+  .tafel {
+    width: min(420px, 100%);
+    margin: auto;
+    padding: 24px;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 18px;
+  }
+  .marke { display: flex; align-items: center; gap: 10px; margin: 0 0 16px; color: var(--muted); font: 9px/1.5 var(--retro); }
+  .marke svg { width: 22px; height: 22px; flex: none; color: var(--accent); }
+  h1, h2 { margin: 0; font: 400 clamp(19px, 6vw, 25px)/1.3 var(--retro); letter-spacing: -0.02em; overflow-wrap: anywhere; }
+  h2 { font-size: clamp(16px, 5vw, 21px); }
+  .unterzeile { margin: 12px 0 0; color: var(--muted); }
+  .klein { margin: 12px 0 0; color: var(--muted); font-size: 15px; line-height: 1.4; }
+  .rekord { margin: 16px 0 0; color: var(--muted); font: 10px/1.6 var(--retro); }
+  .rekord b { color: var(--accent); font-weight: 400; }
+  .zahlen { display: grid; gap: 8px; margin: 18px 0 0; padding: 0; }
+  .zahlen div { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; padding-bottom: 8px; border-bottom: 1px solid var(--line); }
+  .zahlen dt { color: var(--muted); }
+  .zahlen dd { margin: 0; font: 13px/1.4 var(--retro); }
+  .hervor { margin: 16px 0 0; color: var(--accent); font: 11px/1.6 var(--retro); }
+  .knoepfe { display: grid; gap: 12px; margin-top: 20px; }
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 48px;
+    padding: 10px 18px;
+    color: var(--text);
+    background: var(--surface-2);
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    box-shadow: 0 3px 0 var(--line);
+    font: 600 16px/1.3 var(--body);
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+  }
+  .btn:hover { filter: brightness(1.07); }
+  .btn:active { transform: translateY(2px); box-shadow: 0 1px 0 var(--line); }
+  .btn.main { color: var(--on-accent); background: #f2b84b; border-color: #f2b84b; box-shadow: 0 3px 0 var(--accent-edge); }
+  .btn.main:active { box-shadow: 0 1px 0 var(--accent-edge); }
+  .paar { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+
+  /* Schwierigkeit */
+  .stufen { display: flex; gap: 4px; margin-top: 18px; padding: 4px; background: var(--surface-2); border-radius: 14px; }
+  .stufen button {
+    flex: 1 1 0;
+    min-width: 0;
+    min-height: 44px;
+    padding: 8px 4px;
+    color: var(--muted);
+    background: transparent;
+    border: 0;
+    border-radius: 10px;
+    font: 600 15px/1.3 var(--body);
+    cursor: pointer;
+  }
+  .stufen button:hover { color: var(--text); }
+  .stufen button[aria-pressed="true"] { color: var(--text); background: var(--surface); box-shadow: 0 1px 2px rgba(0, 0, 0, 0.25); }
+
+  /* Herausforderung eines Freundes */
+  #duell { margin: 16px 0 0; padding: 12px 14px; background: var(--surface-2); border-left: 4px solid #f2b84b; border-radius: 8px; line-height: 1.4; }
+  #duell strong { display: block; margin-bottom: 4px; color: var(--accent); font: 10px/1.6 var(--retro); overflow-wrap: anywhere; }
+
+  /* Levelauswahl */
+  .welt { display: flex; align-items: center; gap: 8px; margin: 16px 0 6px; color: var(--muted); font: 9px/1.5 var(--retro); }
+  .welt i { flex: none; width: 10px; height: 10px; }
+  .raster { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 6px; }
+  .feldchen {
+    display: grid;
+    place-items: center;
+    align-content: center;
+    gap: 4px;
+    min-height: 50px;
+    padding: 4px 0;
+    color: var(--text);
+    cursor: pointer;
+    background: var(--surface-2);
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    font: 11px/1 var(--retro);
+  }
+  .feldchen:hover:not(:disabled) { filter: brightness(1.1); }
+  .feldchen:disabled { color: var(--muted); cursor: default; background: transparent; opacity: 0.6; }
+  .feldchen.aktuell { border-color: #f2b84b; box-shadow: inset 0 0 0 1px #f2b84b; }
+  .ministerne { display: flex; gap: 1px; height: 8px; }
+  .ministerne svg { width: 8px; height: 8px; color: var(--line); }
+  .ministerne svg.an { color: var(--accent); }
+
+  /* Sterne nach einem Level */
+  .sterne { display: flex; gap: 10px; margin: 18px 0 0; }
+  .sterne svg { width: 40px; height: 40px; color: var(--line); }
+  .sterne svg.an { color: #f2b84b; animation: stern 0.35s ease-out backwards; }
+  .sterne svg.an:nth-child(2) { animation-delay: 0.15s; }
+  .sterne svg.an:nth-child(3) { animation-delay: 0.3s; }
+  @keyframes stern { from { opacity: 0; transform: scale(0.3); } }
+
+  /* Figuren */
+  .figuren { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; margin-top: 16px; }
+  .figurKnopf {
+    display: grid;
+    justify-items: center;
+    gap: 6px;
+    min-height: 118px;
+    padding: 10px 6px;
+    color: var(--text);
+    cursor: pointer;
+    background: var(--surface-2);
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    font: 600 15px/1.3 var(--body);
+  }
+  .figurKnopf:hover:not(:disabled) { filter: brightness(1.08); }
+  .figurKnopf:disabled { color: var(--muted); cursor: default; background: transparent; }
+  .figurKnopf:disabled canvas { filter: grayscale(1) brightness(0.55); }
+  .figurKnopf[aria-pressed="true"] { border-color: #f2b84b; box-shadow: inset 0 0 0 1px #f2b84b; }
+  .figurKnopf canvas { width: 48px; height: 48px; image-rendering: pixelated; }
+  .figurKnopf small { display: flex; align-items: center; gap: 4px; color: var(--muted); font: 9px/1 var(--retro); }
+  .figurKnopf small svg { width: 10px; height: 10px; color: var(--accent); }
+
+  /* Rangliste */
+  #liste { display: grid; gap: 6px; margin: 16px 0 0; padding: 0; list-style: none; }
+  #liste li { display: flex; align-items: center; gap: 10px; min-height: 48px; padding: 4px 6px 4px 12px; background: var(--surface-2); border-radius: 10px; }
+  #liste li.ich { box-shadow: inset 0 0 0 2px #f2b84b; }
+  #liste .platz { flex: none; width: 22px; color: var(--muted); font: 10px/1 var(--retro); }
+  #liste .wer { flex: 1 1 auto; min-width: 0; overflow: hidden; font-weight: 600; text-overflow: ellipsis; white-space: nowrap; }
+  #liste .wie { flex: none; font: 11px/1 var(--retro); }
+  #liste .weg { flex: none; width: 36px; height: 36px; padding: 0; color: var(--muted); cursor: pointer; background: transparent; border: 0; border-radius: 8px; font-size: 20px; line-height: 1; }
+  #liste .weg:hover { color: var(--text); background: var(--surface); }
+  #liste .platzhalter { width: 36px; flex: none; }
+
+  /* Teilen */
+  label.feldname { display: grid; gap: 6px; margin-top: 16px; font-weight: 600; }
+  input[type="text"] {
+    width: 100%;
+    min-height: 48px;
+    padding: 10px 12px;
+    color: var(--text);
+    background: var(--bg);
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    font: 16px/1.3 var(--body); /* 16px verhindert das Zoomen auf dem iPhone */
+    -webkit-user-select: text;
+    user-select: text;
+  }
+  #teilenStatus { min-height: 24px; margin: 12px 0 0; color: var(--accent); font-weight: 600; }
+  #teilenStatus:empty { display: none; }
+
+  /* Hilfe */
+  .regeln { display: grid; gap: 8px; margin: 14px 0 0; padding: 0; list-style: none; font-size: 15px; line-height: 1.4; }
+  .regeln li { display: grid; grid-template-columns: 8px 1fr; column-gap: 10px; }
+  .regeln li::before { content: ''; width: 8px; height: 8px; margin-top: 7px; background: var(--accent); }
+  .legende { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px 12px; margin: 12px 0 0; padding: 0; list-style: none; font-size: 14px; line-height: 1.25; }
+  .legende li { display: flex; align-items: center; gap: 8px; }
+  .legende canvas { flex: none; width: 28px; height: 28px; }
+  .zwischen { margin: 18px 0 0; font: 10px/1.6 var(--retro); color: var(--accent); }
+
+  #dreh { display: none; color: var(--muted); font-size: 12px; line-height: 1.25; }
+
+  /* Handy quer: Anzeige wandert an den Rand, das Spielfeld bleibt so groß wie möglich */
+  @media (orientation: landscape) and (max-height: 560px) {
+    body { flex-direction: row; }
+    #hud { flex-direction: column; align-items: flex-start; justify-content: center; gap: 12px; width: 112px; max-width: none; height: 100%; margin: 0; padding: 6px 4px 6px 10px; }
+    #zielBox { margin-right: 0; }
+    #feld { align-items: center; justify-content: center; }
+    #dreh { display: block; }
+    /* Das Startfenster wird flacher, damit "Spielen" ohne Scrollen zu sehen ist */
+    .tafel { width: min(620px, 100%); padding: 16px 20px; }
+    #fStart .marke, #fStart .unterzeile, #fStart .js-stufentext { display: none; }
+    #fStart .stufen, #fStart .rekord { margin-top: 10px; }
+    #fStart .knoepfe { grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 12px; }
+    #fStart .btn.main { grid-column: 1 / -1; }
+    #fStart .paar { display: contents; }
+  }
+
+  @media (max-width: 359px) {
+    #hud { gap: 9px; padding-left: 8px; padding-right: 6px; }
+    .wert b { font-size: 11px; }
+    .rund { width: 40px; height: 44px; }
+    .tafel { padding: 18px; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .btn:active { transform: none; }
+    .sterne svg.an { animation: none; }
+  }
+
+  /* Krabbenalarm */
+  canvas#bild { touch-action: none; }
+  body.imSpiel canvas#bild { cursor: none; }
+  .titelzeile { display: flex; align-items: center; justify-content: space-between; gap: 10px; }
+  #startKalle { flex: none; width: 88px; height: 72px; }
+  .figuren { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .figurKnopf canvas { width: 88px; height: 72px; }
+  .legende canvas { width: 44px; height: 44px; }
+  .feldchen.bossfeld { background: color-mix(in srgb, var(--surface-2) 82%, #e8503a); }
+  @media (orientation: landscape) and (max-height: 560px) {
+    #startKalle { width: 44px; height: 36px; }
+    #fStart .knoepfe .btn[data-oeffne="fHilfe"], #fStart a.btn { min-height: 44px; }
+  }
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="stern" viewBox="0 0 24 24"><path fill="currentColor" d="M12 1.5l3.2 6.9 7.5.9-5.5 5.2 1.4 7.5L12 18.4l-6.6 3.6 1.4-7.5L1.3 9.3l7.5-.9z"/></symbol>
+  <symbol id="logo" viewBox="0 0 11 11"><path fill="currentColor" d="M4 0h1v1h-1zM5 0h1v1h-1zM6 0h1v1h-1zM4 1h1v1h-1zM6 1h1v1h-1zM4 2h1v1h-1zM5 2h1v1h-1zM6 2h1v1h-1zM5 3h1v1h-1zM3 4h1v1h-1zM4 4h1v1h-1zM5 4h1v1h-1zM6 4h1v1h-1zM7 4h1v1h-1zM5 5h1v1h-1zM0 6h1v1h-1zM5 6h1v1h-1zM10 6h1v1h-1zM0 7h1v1h-1zM1 7h1v1h-1zM5 7h1v1h-1zM9 7h1v1h-1zM10 7h1v1h-1zM0 8h1v1h-1zM5 8h1v1h-1zM10 8h1v1h-1zM1 9h1v1h-1zM2 9h1v1h-1zM5 9h1v1h-1zM8 9h1v1h-1zM9 9h1v1h-1zM3 10h1v1h-1zM4 10h1v1h-1zM5 10h1v1h-1zM6 10h1v1h-1zM7 10h1v1h-1z"/></symbol>
+</svg>
+
+<div id="hud">
+  <div class="wert"><small>PUNKTE</small><b id="punkte">0</b></div>
+  <div class="wert"><small id="levelName">LEVEL</small><b id="levelAnzeige">1</b></div>
+  <div class="wert" id="zielBox"><small id="zielName">REKORD</small><b id="zielWert">0</b></div>
+  <p id="dreh" style="margin:0">Hochkant ist das Feld größer.</p>
+  <div class="knoepfchen">
+    <button class="rund" id="tonKnopf" type="button" aria-label="Ton an oder aus">
+      <svg id="tonAn" viewBox="0 0 16 16" fill="currentColor" shape-rendering="crispEdges" aria-hidden="true"><path d="M2 5h3v6H2zM6 4h1v8H6zM7 3h1v10H7zM10 5h1v6h-1zM12 3h1v10h-1z"/></svg>
+      <svg id="tonAus" viewBox="0 0 16 16" fill="currentColor" shape-rendering="crispEdges" aria-hidden="true"><path d="M2 5h3v6H2zM6 4h1v8H6zM7 3h1v10H7zM10 5h1v1h-1zM11 6h1v1h-1zM12 7h1v2h-1zM11 9h1v1h-1zM10 10h1v1h-1zM14 5h1v1h-1zM13 6h1v1h-1zM14 10h1v1h-1zM13 9h1v1h-1z"/></svg>
+    </button>
+    <button class="rund" id="pauseKnopf" type="button" aria-label="Pause">
+      <svg viewBox="0 0 16 16" fill="currentColor" shape-rendering="crispEdges" aria-hidden="true"><path d="M4 3h3v10H4zM9 3h3v10H9z"/></svg>
+    </button>
+  </div>
+</div>
+
+<div id="feld">
+  <canvas id="bild" role="img" aria-label="Spielfeld von Krabbenalarm"></canvas>
+</div>
+
+<div id="fenster">
+  <div class="tafel">
+
+    <section id="fStart">
+      <p class="marke"><svg aria-hidden="true"><use href="#logo"/></svg>PIXELHAFEN</p>
+      <div class="titelzeile">
+        <h1>KRABBEN&shy;ALARM</h1>
+        <canvas id="startKalle" width="176" height="144" aria-hidden="true"></canvas>
+      </div>
+      <p class="unterzeile">Alle werfen ihren Krempel ins Hafenbecken. Und ganz unten läuft Kalle. Weich aus, so lange du kannst!</p>
+      <div id="duell" hidden><strong id="duellTitel"></strong><span id="duellText"></span></div>
+      <div class="stufen" role="group" aria-label="Schwierigkeit"></div>
+      <p class="klein js-stufentext"></p>
+      <p class="rekord">REKORD <b class="js-rekord">0</b></p>
+      <div class="knoepfe">
+        <button class="btn main" id="losKnopf" type="button">Spielen</button>
+        <div class="paar">
+          <button class="btn" type="button" data-oeffne="fLevels">Level</button>
+          <button class="btn" id="endlosKnopf" type="button">Dauerregen</button>
+        </div>
+        <div class="paar">
+          <button class="btn" type="button" data-oeffne="fFiguren">Figuren</button>
+          <button class="btn" type="button" data-oeffne="fListe">Rangliste</button>
+        </div>
+        <button class="btn" type="button" data-oeffne="fHilfe">So geht's</button>
+        <a class="btn" href="https://moje9328.github.io/spiele/">Zur Pixelhafen-Seite</a>
+      </div>
+    </section>
+
+    <section id="fLevels" hidden>
+      <h2>LEVEL WÄHLEN</h2>
+      <div class="stufen" role="group" aria-label="Schwierigkeit"></div>
+      <div id="levelListe"></div>
+      <p class="klein">Für einen hohen Highscore startest du am besten bei Level 1, denn dann sammelst du am längsten Punkte.</p>
+      <div class="knoepfe"><button class="btn" type="button" data-oeffne="fStart">Zurück</button></div>
+    </section>
+
+    <section id="fFiguren" hidden>
+      <h2>FIGUREN</h2>
+      <p class="klein" id="figurenText"></p>
+      <div class="figuren" id="figurenListe"></div>
+      <div class="knoepfe"><button class="btn" type="button" data-oeffne="fStart">Zurück</button></div>
+    </section>
+
+    <section id="fListe" hidden>
+      <h2>RANGLISTE</h2>
+      <div class="stufen" role="group" aria-label="Schwierigkeit"></div>
+      <ol id="liste"></ol>
+      <p class="klein">Schick deinen Link an Freunde. Schicken sie dir ihren zurück, stehen sie hier in deiner Liste. Alles bleibt auf deinem Gerät.</p>
+      <div class="knoepfe">
+        <button class="btn main" id="listeTeilen" type="button">Freunde herausfordern</button>
+        <button class="btn" type="button" data-oeffne="fStart">Zurück</button>
+      </div>
+    </section>
+
+    <section id="fHilfe" hidden>
+      <h2>SO GEHT'S</h2>
+      <p class="zwischen">WAS IST WAS?</p>
+      <ul class="legende" id="legendeRegel"></ul>
+      <p class="zwischen">SPIELEN</p>
+      <ul class="regeln">
+        <li><strong id="hilfeSteuerung"></strong></li>
+        <li>Überlebe, bis der Balken oben voll ist. Dann hat Kalle Feierabend und das Level ist geschafft.</li>
+        <li>Jeder Treffer kostet ein Herz. Sind alle weg, ist das Spiel vorbei.</li>
+        <li>Lässt du etwas ganz knapp neben dir landen, gibt das Extrapunkte. Viele knappe Treffer hintereinander erhöhen deinen Punkte-Faktor bis x5.</li>
+      </ul>
+      <p class="zwischen">STERNE</p>
+      <ul class="regeln">
+        <li>In jedem Level fallen 3 Sterne. Sammle sie ein, denn sie schalten neue Figuren frei.</li>
+      </ul>
+      <p class="zwischen">HILFEN</p>
+      <ul class="legende" id="legendeHilfen"></ul>
+      <p class="zwischen">DIE 5 WELTEN</p>
+      <ul class="regeln" id="weltenListe"></ul>
+      <p class="zwischen">DAUERREGEN</p>
+      <ul class="regeln">
+        <li>Ein Spiel ohne Ende: Es wird immer schneller und wechselt ständig die Welt. Wie lange hältst du durch?</li>
+      </ul>
+      <div class="knoepfe"><button class="btn" type="button" data-oeffne="fStart">Zurück</button></div>
+    </section>
+
+    <section id="fPause" hidden>
+      <h2>PAUSE</h2>
+      <p class="rekord">PUNKTE <b id="pausePunkte">0</b></p>
+      <div class="knoepfe">
+        <button class="btn main" id="weiterKnopf" type="button">Weiterspielen</button>
+        <button class="btn" id="pauseMusik" type="button">Musik</button>
+        <button class="btn" id="pauseNeu" type="button">Neu starten</button>
+        <button class="btn" id="pauseMenue" type="button">Spiel beenden</button>
+      </div>
+    </section>
+
+    <section id="fGeschafft" hidden>
+      <h2 id="geschafftTitel">LEVEL GESCHAFFT</h2>
+      <div class="sterne" id="geschafftSterne" role="img"></div>
+      <dl class="zahlen">
+        <div><dt>Muscheln</dt><dd id="gMuscheln"></dd></div>
+        <div><dt>Knapp daneben</dt><dd id="gKnapp"></dd></div>
+        <div><dt>Level-Bonus</dt><dd id="gBonus"></dd></div>
+        <div><dt>Punkte gesamt</dt><dd id="gPunkte"></dd></div>
+      </dl>
+      <p class="hervor" id="gFrei" hidden></p>
+      <p class="klein" id="gTipp"></p>
+      <div class="knoepfe">
+        <button class="btn main" id="naechstesKnopf" type="button">Weiter</button>
+        <button class="btn" id="geschafftMenue" type="button">Spiel beenden</button>
+      </div>
+    </section>
+
+    <section id="fEnde" hidden>
+      <h2>GAME OVER</h2>
+      <p class="klein" id="eSpruch"></p>
+      <p class="hervor" id="neuerRekord" hidden>NEUER REKORD!</p>
+      <dl class="zahlen">
+        <div><dt>Punkte</dt><dd id="ePunkte"></dd></div>
+        <div><dt id="eLevelName">Erreichtes Level</dt><dd id="eLevel"></dd></div>
+        <div><dt>Dein Rekord</dt><dd id="eRekord"></dd></div>
+      </dl>
+      <p class="klein" id="eDuell" hidden></p>
+      <div class="knoepfe">
+        <button class="btn main" id="nochmalKnopf" type="button">Weiter</button>
+        <button class="btn" id="neuKnopf" type="button">Neu ab Level 1</button>
+        <button class="btn" id="endeTeilen" type="button">Freunde herausfordern</button>
+        <button class="btn" type="button" data-oeffne="fStart">Zum Menü</button>
+      </div>
+    </section>
+
+    <section id="fTeilen" hidden>
+      <h2>HERAUSFORDERN</h2>
+      <p class="unterzeile" id="teilenText"></p>
+      <label class="feldname">Dein Name für den Link
+        <input type="text" id="nameFeld" maxlength="12" autocomplete="off" placeholder="zum Beispiel Sam">
+      </label>
+      <p class="klein">Dein Name, deine Punkte und dein Level stehen im Link. Mehr nicht, und du entscheidest, wem du ihn schickst.</p>
+      <p id="teilenStatus" role="status"></p>
+      <input type="text" id="linkFeld" readonly hidden aria-label="Dein Link zum Kopieren">
+      <div class="knoepfe">
+        <button class="btn main" id="teilenKnopf" type="button">Link teilen</button>
+        <button class="btn" id="teilenZurueck" type="button">Zurück</button>
+      </div>
+    </section>
+
+  </div>
+</div>
+
+<script>
+// =====================================================================
+//  HIER KANNST DU ALLES ÄNDERN
+// =====================================================================
+
+// Diese Adresse steckt in den Links, die man an Freunde schickt
+const SPIEL_ADRESSE = 'https://moje9328.github.io/krabbenalarm/';
+
+// Die drei Schwierigkeiten.
+// herzen = Leben, tempo = Fallgeschwindigkeit mal, dichte = Menge mal, luecke = Lücken in Reihen mal, faktor = Punkte mal
+const STUFEN = {
+  leicht: { name: 'Leicht', herzen: 5, tempo: 0.84, dichte: 0.78, luecke: 1.2, faktor: 1, text: '5 Herzen, alles fällt langsamer und es ist weniger los.' },
+  normal: { name: 'Normal', herzen: 3, tempo: 1, dichte: 1, luecke: 1, faktor: 1.5, text: '3 Herzen und 1,5-fache Punkte.' },
+  profi: { name: 'Profi', herzen: 3, tempo: 1.14, dichte: 1.2, luecke: 0.88, faktor: 2, text: '3 Herzen, viel Krempel, enge Lücken und doppelte Punkte.' }
+};
+
+// Die fünf Welten. griff = wie schnell Kalle reagiert (klein = rutschig), flink = sein Tempo mal
+const WELTEN = [
+  { name: 'HAFENKANTE', farbe: '#3a9cc4', griff: 1, flink: 1,
+    text: 'Am Hafen geht es los. Die Möwen lassen Eier fallen, und deren Glibber bremst dich aus.' },
+  { name: 'STRANDBAD', farbe: '#f2b84b', griff: 1, flink: 1,
+    text: 'Bälle und Kokosnüsse hüpfen quer durchs Bild. Lauf einfach unter ihnen durch.' },
+  { name: 'STURMNACHT', farbe: '#7a86c8', griff: 1, flink: 1,
+    text: 'Der Wind treibt alles zur Seite, auch dich. Wo der Boden gelb blinkt, schlägt gleich der Blitz ein.' },
+  { name: 'MEERESGRUND', farbe: '#2fb8a8', griff: 0.5, flink: 0.94,
+    text: 'Unter Wasser ist Kalle träge. Alles schaukelt beim Sinken, und Minen platzen in Splitter.' },
+  { name: 'WELTRAUMHAFEN', farbe: '#a070e8', griff: 0.34, flink: 1,
+    text: 'Fast keine Schwerkraft: Kalle rutscht. Meteore brechen entzwei, und Ufos schießen Strahlen.' }
+];
+
+// Alle 30 Level. Pro Welt 6 Stück, das letzte ist jeweils ein Boss.
+// zeit = Sekunden bis zum Feierabend, tempo = Fallgeschwindigkeit, dichte = wie viel los ist,
+// muster = was passiert (siehe MUSTER weiter unten), arten = welche Gegenstände fallen
+const LEVEL = [
+  { name: 'Erster Krempel', zeit: 28, tempo: 66, dichte: 0.82, muster: ['regen', 'regen', 'treppe'], arten: ['dose', 'stiefel', 'fisch'], neu: 'Weich dem Krempel aus, bis der Balken oben voll ist!' },
+  { name: 'Stiefelwetter', zeit: 32, tempo: 72, dichte: 0.9, muster: ['regen', 'treppe', 'zange', 'gezielt'], arten: ['dose', 'stiefel', 'fisch', 'kiste'] },
+  { name: 'Möwenalarm', zeit: 36, tempo: 76, dichte: 0.95, muster: ['regen', 'moewe', 'moewe', 'gezielt', 'zickzack'], arten: ['stiefel', 'fisch', 'kiste'], neu: 'Möweneier! Ihr Glibber macht dich langsam.' },
+  { name: 'Kistenschieben', zeit: 38, tempo: 80, dichte: 1, muster: ['reihe', 'regen', 'moewe', 'treppe'], arten: ['kiste', 'dose', 'fisch'], neu: 'Eine Reihe von Kisten: Finde die Lücke!' },
+  { name: 'Anker los', zeit: 42, tempo: 86, dichte: 1.05, muster: ['reihe', 'schnell', 'zickzack', 'moewe', 'gezielt', 'zange'], arten: ['anker', 'kiste', 'stiefel'] },
+  { name: 'Möwe Gisela', zeit: 50, tempo: 88, dichte: 1.05, boss: 'gisela', muster: ['salve', 'moewe', 'reihe', 'salve', 'gezielt'], arten: ['ei', 'fisch', 'stiefel', 'anker'] },
+
+  { name: 'Badetag', zeit: 32, tempo: 78, dichte: 0.92, muster: ['hopser', 'regen', 'treppe'], arten: ['eis', 'flipflop', 'schaufel'], neu: 'Bälle hüpfen! Lauf unter ihnen durch.' },
+  { name: 'Hüpfende Bälle', zeit: 36, tempo: 82, dichte: 0.98, muster: ['hopser', 'hopser', 'regen', 'gezielt'], arten: ['eis', 'flipflop', 'ente'] },
+  { name: 'Kokosregen', zeit: 38, tempo: 86, dichte: 1, muster: ['kokos', 'reihe', 'zickzack', 'hopser'], arten: ['schaufel', 'ente', 'flipflop'] },
+  { name: 'Eis am Stiel', zeit: 40, tempo: 90, dichte: 1.04, muster: ['reihe', 'hopser', 'schnell', 'zange'], arten: ['eis', 'ente', 'schirm'] },
+  { name: 'Flipflop-Flut', zeit: 44, tempo: 94, dichte: 1.08, muster: ['doppelreihe', 'kokos', 'zickzack', 'gezielt', 'hopser'], arten: ['flipflop', 'schirm', 'ente'] },
+  { name: 'Quietsche-Helga', zeit: 52, tempo: 96, dichte: 1.08, boss: 'helga', muster: ['salve', 'hopser', 'kokos', 'reihe', 'salve'], arten: ['ente', 'eis', 'flipflop'] },
+
+  { name: 'Aufziehender Sturm', zeit: 34, tempo: 82, dichte: 0.95, wind: 0.5, muster: ['regen', 'treppe', 'zange'], arten: ['ziegel', 'fass', 'zwerg'], neu: 'Der Wind schiebt alles zur Seite. Auch dich!' },
+  { name: 'Gegenwind', zeit: 38, tempo: 86, dichte: 1, wind: 0.8, muster: ['regen', 'reihe', 'gezielt', 'treppe'], arten: ['ziegel', 'fass', 'zwerg'] },
+  { name: 'Erster Blitz', zeit: 40, tempo: 88, dichte: 1, wind: 0.8, muster: ['blitze', 'regen', 'blitze', 'treppe'], arten: ['fass', 'ziegel', 'zwerg'], neu: 'Blinkt der Boden gelb, schlägt dort der Blitz ein!' },
+  { name: 'Fliegende Zwerge', zeit: 42, tempo: 92, dichte: 1.04, wind: 1, muster: ['blitze', 'reihe', 'zickzack', 'gezielt'], arten: ['zwerg', 'zwerg', 'ziegel'] },
+  { name: 'Kuh im Wind', zeit: 46, tempo: 96, dichte: 1.08, wind: 1, muster: ['blitzreihe', 'doppelreihe', 'schnell', 'blitze', 'gezielt'], arten: ['kuh', 'fass', 'zwerg'] },
+  { name: 'Gewitter-Olaf', zeit: 54, tempo: 98, dichte: 1.08, wind: 1, boss: 'olaf', muster: ['blitze', 'salve', 'blitzreihe', 'reihe', 'salve'], arten: ['ziegel', 'fass', 'kuh'] },
+
+  { name: 'Abgetaucht', zeit: 34, tempo: 72, dichte: 0.92, muster: ['wobbel', 'regen', 'treppe'], arten: ['flasche', 'stiefel', 'anker'], neu: 'Unter Wasser ist Kalle träge. Plane voraus!' },
+  { name: 'Flaschenpost', zeit: 38, tempo: 76, dichte: 0.96, muster: ['wobbel', 'reihe', 'gezielt'], arten: ['flasche', 'kugelfisch', 'stiefel'] },
+  { name: 'Quallenballett', zeit: 40, tempo: 78, dichte: 1, muster: ['quallen', 'wobbel', 'zickzack'], arten: ['flasche', 'kugelfisch'], neu: 'Quallen sinken in Schüben. Gut hinschauen!' },
+  { name: 'Minenfeld', zeit: 44, tempo: 82, dichte: 1, muster: ['minen', 'quallen', 'reihe', 'wobbel'], arten: ['kugelfisch', 'flasche', 'anker'], neu: 'Minen blinken und platzen dann in Splitter!' },
+  { name: 'Licht aus!', zeit: 46, tempo: 80, dichte: 0.94, dunkel: true, muster: ['wobbel', 'quallen', 'minen', 'regen'], arten: ['kugelfisch', 'flasche', 'stiefel'], neu: 'Hier unten ist es stockdunkel. Achte auf die leuchtenden Punkte!' },
+  { name: 'Krake Inge', zeit: 56, tempo: 86, dichte: 1.04, boss: 'inge', muster: ['tentakel', 'wobbel', 'tentakel', 'minen', 'salve'], arten: ['kugelfisch', 'flasche', 'anker'] },
+
+  { name: 'Abgehoben', zeit: 36, tempo: 90, dichte: 0.94, muster: ['regen', 'treppe', 'gezielt'], arten: ['socke', 'toaster', 'klo'], neu: 'Fast keine Schwerkraft: Kalle rutscht. Früh bremsen!' },
+  { name: 'Meteorschauer', zeit: 40, tempo: 94, dichte: 0.98, muster: ['meteore', 'regen', 'zange'], arten: ['socke', 'toaster', 'satellit'], neu: 'Meteore brechen auf halber Höhe entzwei!' },
+  { name: 'Weltraumschrott', zeit: 42, tempo: 98, dichte: 1, muster: ['meteore', 'doppelreihe', 'schnell'], arten: ['toaster', 'satellit', 'klo'] },
+  { name: 'Toaster-Orbit', zeit: 44, tempo: 102, dichte: 1.02, muster: ['strahl', 'meteore', 'zickzack', 'gezielt'], arten: ['toaster', 'toaster', 'socke'], neu: 'Ufo-Strahlen wandern über den Boden. Weg da!' },
+  { name: 'Blorps Vorhut', zeit: 48, tempo: 108, dichte: 1.06, muster: ['strahl', 'doppelreihe', 'meteore', 'gezielt', 'schnell'], arten: ['klo', 'satellit', 'socke'] },
+  { name: "Käpt'n Blorp", zeit: 60, tempo: 110, dichte: 1.08, boss: 'blorp', muster: ['strahl', 'salve', 'meteore', 'doppelreihe', 'salve', 'strahl'], arten: ['toaster', 'klo', 'satellit'] }
+];
+
+// Die Bosse: Was sie zu Beginn und am Ende rufen
+const BOSSE = {
+  gisela: { name: 'MÖWE GISELA', ruf: 'DAS IST MEIN PIER!', ende: 'PFFF! ICH HATTE EH HUNGER.' },
+  helga: { name: 'QUIETSCHE-HELGA', ruf: 'QUIETSCH! BADEVERBOT!', ende: 'MIR GEHT DIE LUFT AUS...' },
+  olaf: { name: 'GEWITTER-OLAF', ruf: 'ICH SEH SCHWARZ FÜR DICH!', ende: 'ICH VERZIEH MICH.' },
+  inge: { name: 'KRAKE INGE', ruf: 'ACHT ARME FÜR DICH!', ende: 'MEINE TINTE IST ALLE!' },
+  blorp: { name: "KÄPT'N BLORP", ruf: 'BLORP! DU BIST GELANDET!', ende: 'BLORP... NÄCHSTES MAL!' }
+};
+
+// Die Hilfen, die manchmal herunterfallen. dauer = Sekunden, die sie wirken.
+const HILFEN = {
+  eimer: { name: 'EIMER', dauer: 0, text: 'Eimerhelm: hält einen Treffer ab' },
+  flossen: { name: 'TURBO!', dauer: 8, text: 'Flossen: Kalle ist schneller' },
+  schnecke: { name: 'ZEITLUPE', dauer: 6, text: 'Schnecke: alles wird langsamer' },
+  magnet: { name: 'MAGNET', dauer: 10, text: 'Magnet: zieht Muscheln an' },
+  mini: { name: 'MINI-KALLE', dauer: 8, text: 'Brause: Kalle schrumpft' },
+  hupe: { name: 'TUUUT!', dauer: 0, text: 'Nebelhorn: fegt alles weg' },
+  herz: { name: '+1 HERZ', dauer: 0, text: 'Herz: ein Leben mehr' }
+};
+
+// Die Figuren. sterne = so viele Sterne braucht man dafür. Alle spielen sich gleich.
+const FIGUREN = {
+  kalle: { name: 'Kalle', sterne: 0, farbe: ['#e8503a', '#a82c24', '#ff9478'] },
+  greta: { name: 'Greta', sterne: 9, farbe: ['#f0609a', '#a8326a', '#ffa8cc'], extra: 'schleife' },
+  knut: { name: 'Kapitän Knut', sterne: 24, farbe: ['#e8862c', '#a85a18', '#ffbe78'], extra: 'muetze' },
+  piet: { name: 'Pirat Piet', sterne: 42, farbe: ['#b03a3a', '#6e2020', '#e07a6a'], extra: 'pirat' },
+  doerte: { name: 'Disco-Dörte', sterne: 60, farbe: ['#a070e8', '#6a3fb0', '#d4b8ff'], extra: 'brille' },
+  anton: { name: 'Astro-Anton', sterne: 80, farbe: ['#3fb0a8', '#20706a', '#8ae8dc'], extra: 'helm' }
+};
+
+// Was Kalle sagt
+const SPRUECHE = {
+  knapp: ['PUH!', 'KNAPP!', 'HAARSCHARF!', 'GLÜCK GEHABT!', 'HA! DANEBEN!', 'NICHT MIT MIR!'],
+  treffer: ['AUA!', 'FRECHHEIT!', 'MEINE SCHERE!', 'WER WIRFT DAS?', 'MEIN PANZER!'],
+  feier: ['FEIERABEND!', 'GESCHAFFT!', 'TSCHAKKA!', 'WAS FÜR EIN TAG!'],
+  ende: ['Kalle braucht jetzt erst mal eine Pause.', 'Kalle liegt flach. Aber nur kurz.', 'Das war zu viel Krempel für eine kleine Krabbe.', 'Kalle zählt seine Beine. Es sind noch alle da.']
+};
+const TREFFER_SPRUCH = {
+  anker: 'EIN ANKER?!', stiefel: 'ZIEH DEN AN!', fisch: 'IGITT, FISCH!', kuh: 'MUUUH?!', klo: 'BESETZT!', toaster: 'SEHR KNUSPRIG!',
+  zwerg: 'DIESER ZWERG!', ente: 'QUIETSCH!', socke: 'DIE STINKT!', ei: 'GLIBBER!', eis: 'KOPF-FROST!', qualle: 'BZZZT!', kugelfisch: 'PIEKST!'
+};
+
+// Die Musik: Akkorde als Tonnummern. 'lied' sind fertige Melodien.
+// Welt 1 spielt das alte Seemannslied "Drunken Sailor", das darf jeder verwenden.
+const MUSIK = [
+  { bpm: 132, lied: [69, 69, 69, 69, 69, 62, 65, 69, 67, 67, 67, 67, 67, 60, 64, 67, 69, 69, 69, 69, 69, 71, 72, 74, 72, 69, 67, 64, 62, 0, 62, 0], bass: [38, 36, 38, 36] },
+  { bpm: 138, akkorde: [[60, 64, 67], [57, 60, 64], [65, 69, 72], [67, 71, 74]], bass: [36, 33, 41, 43] },
+  { bpm: 156, akkorde: [[57, 60, 64], [57, 60, 64], [65, 69, 72], [64, 68, 71]], bass: [33, 33, 41, 40] },
+  { bpm: 96, akkorde: [[62, 65, 69], [58, 62, 65], [55, 58, 62], [57, 61, 64]], bass: [38, 34, 43, 33], weich: true },
+  { bpm: 120, akkorde: [[64, 67, 71], [60, 64, 67], [67, 71, 74], [62, 66, 69]], bass: [40, 36, 43, 38], weich: true }
+];
+
+// =====================================================================
+//  AB HIER MUSST DU NORMALERWEISE NICHTS MEHR ÄNDERN
+// =====================================================================
+
+const SPEICHER = 'krabbenalarm-daten';
+const B = 180;                       // Spielfeld-Breite in Bildpunkten, auf jedem Gerät gleich
+const H_MIN = 280, H_MAX = 360;      // Die Höhe passt sich dem Bildschirm an
+const BODEN = 28;                    // So hoch ist der Boden
+const TAKT = 1 / 120;                // Feine Rechenschritte
+const TEMPO_KALLE = 158, BESCHLEUNIGUNG = 1500;
+const KALLE_B = 8, KALLE_H = 13;     // Treffer-Fläche von Kalle (kleiner als das Bild, das ist fairer)
+const KNAPP_ABSTAND = 7;             // So wenig Luft zählt als "knapp"
+const HOPF_SCHWERE = 260;
+const HERZEN_MAX = 7, EXTRA_ALLE = 25000;
+const STUFEN_NAMEN = Object.keys(STUFEN);
+
+const wenigBewegung = matchMedia('(prefers-reduced-motion: reduce)');
+const $ = id => document.getElementById(id);
+const zahl = n => Math.round(n).toLocaleString('de-DE');
+const begrenzt = (wert, min, max) => Math.max(min, Math.min(max, wert));
+const zahlKurz = n => (n >= 1000000 ? (n / 1000000).toFixed(2).replace('.', ',') + 'M' : zahl(n));
+const grossName = name => name.toLocaleUpperCase('de-DE');
+
+// Würfel mit fester Reihenfolge: Dasselbe Level läuft bei jedem Versuch gleich ab
+function wuerfel(startwert) {
+  let a = startwert >>> 0;
+  const zufall = () => {
+    a = (a + 0x6D2B79F5) >>> 0;
+    let t = a;
+    t = Math.imul(t ^ (t >>> 15), t | 1);
+    t ^= t + Math.imul(t ^ (t >>> 7), t | 61);
+    return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+  };
+  zufall.von = (min, max) => min + zufall() * (max - min);
+  zufall.ganz = (min, max) => min + Math.floor(zufall() * (max - min + 1));
+  zufall.wahl = liste => liste[Math.floor(zufall() * liste.length)];
+  return zufall;
+}
+
+// --------------------------- Speichern ---------------------------
+
+function leererFortschritt() { return { frei: 1, rekord: 0, rekordLevel: 0, rekordEndlos: 0, sterne: {} }; }
+
+function ladeDaten() {
+  const leer = { name: '', stufe: 'normal', ton: true, musik: true, figur: 'kalle', freunde: [], fortschritt: {} };
+  let roh = null;
+  try { roh = JSON.parse(localStorage.getItem(SPEICHER)); } catch (error) {}
+  const d = Object.assign(leer, roh && typeof roh === 'object' ? roh : {});
+  if (!Object.prototype.hasOwnProperty.call(STUFEN, d.stufe)) d.stufe = 'normal';
+  if (!Object.prototype.hasOwnProperty.call(FIGUREN, d.figur)) d.figur = 'kalle';
+  if (!Array.isArray(d.freunde)) d.freunde = [];
+  if (!d.fortschritt || typeof d.fortschritt !== 'object') d.fortschritt = {};
+  for (const stufe of STUFEN_NAMEN) {
+    d.fortschritt[stufe] = Object.assign(leererFortschritt(), d.fortschritt[stufe]);
+  }
+  return d;
+}
+
+const daten = ladeDaten();
+function speichere() {
+  try { localStorage.setItem(SPEICHER, JSON.stringify(daten)); } catch (error) {}
+}
+const fortschritt = () => daten.fortschritt[daten.stufe];
+
+// Sterne zählen über alle Schwierigkeiten: pro Level zählt das beste Ergebnis
+function sterneGesamt() {
+  const bestes = {};
+  for (const stufe of STUFEN_NAMEN) {
+    for (const [nr, anzahl] of Object.entries(daten.fortschritt[stufe].sterne)) {
+      bestes[nr] = Math.max(bestes[nr] || 0, anzahl);
+    }
+  }
+  return Object.values(bestes).reduce((summe, n) => summe + n, 0);
+}
+
+// --------------------------- Ton ---------------------------
+
+const ton = {
+  ctx: null,
+  an() {
+    if (!this.ctx) {
+      const AudioClass = window.AudioContext || window.webkitAudioContext;
+      if (AudioClass) this.ctx = new AudioClass();
+    }
+    if (this.ctx && this.ctx.state === 'suspended') this.ctx.resume().catch(() => {});
+  },
+  piep(frequenz, dauer, lautstaerke = 0.05, art = 'square', start = 0, ziel = 0) {
+    if (!daten.ton || !this.ctx || this.ctx.state !== 'running') return;
+    const jetzt = this.ctx.currentTime + start;
+    const osc = this.ctx.createOscillator();
+    const hull = this.ctx.createGain();
+    osc.type = art;
+    osc.frequency.setValueAtTime(frequenz, jetzt);
+    if (ziel) osc.frequency.exponentialRampToValueAtTime(ziel, jetzt + dauer);
+    hull.gain.setValueAtTime(lautstaerke, jetzt);
+    hull.gain.exponentialRampToValueAtTime(0.0008, jetzt + dauer);
+    osc.connect(hull).connect(this.ctx.destination);
+    osc.start(jetzt);
+    osc.stop(jetzt + dauer + 0.02);
+  },
+  knapp(kette) { const f = 660 * Math.pow(2, Math.min(kette, 12) / 12); this.piep(f, 0.07, 0.035, 'square', 0, f * 1.4); },
+  muschel() { this.piep(988, 0.05, 0.028, 'square'); this.piep(1319, 0.1, 0.028, 'square', 0.05); },
+  stern() { [784, 988, 1175, 1568].forEach((f, i) => this.piep(f, 0.12, 0.05, 'square', i * 0.06)); },
+  hilfe() { [523, 659, 784].forEach((f, i) => this.piep(f, 0.09, 0.05, 'square', i * 0.07)); },
+  hupe() { this.piep(110, 0.7, 0.09, 'sawtooth'); this.piep(165, 0.7, 0.05, 'square'); },
+  treffer() { this.piep(220, 0.26, 0.09, 'sawtooth', 0, 60); this.piep(110, 0.2, 0.06, 'square', 0.02, 45); },
+  klonk() { this.piep(1400, 0.06, 0.06, 'square', 0, 500); this.piep(700, 0.18, 0.05, 'triangle', 0.03, 220); },
+  plumps() { this.piep(150, 0.08, 0.018, 'triangle', 0, 70); },
+  hopf() { this.piep(240, 0.09, 0.022, 'square', 0, 420); },
+  moewe() { this.piep(1300, 0.14, 0.018, 'sawtooth', 0, 800); this.piep(1400, 0.16, 0.018, 'sawtooth', 0.17, 760); },
+  glibber() { this.piep(300, 0.2, 0.04, 'sine', 0, 90); },
+  warnung() { this.piep(1320, 0.05, 0.018, 'square'); },
+  blitz() { this.piep(1800, 0.05, 0.06, 'sawtooth', 0, 200); this.piep(90, 0.32, 0.09, 'sawtooth', 0.02, 40); },
+  strahl() { this.piep(420, 0.9, 0.03, 'sawtooth', 0, 900); },
+  knall() { this.piep(160, 0.28, 0.08, 'sawtooth', 0, 40); this.piep(80, 0.3, 0.07, 'square', 0.01, 35); },
+  knacks() { this.piep(520, 0.1, 0.04, 'sawtooth', 0, 180); },
+  verloren() { [392, 330, 262, 196].forEach((f, i) => this.piep(f, 0.17, 0.06, 'square', i * 0.12)); },
+  geschafft() { [523, 659, 784, 1047, 784, 1047, 1319].forEach((f, i) => this.piep(f, 0.13, 0.055, 'square', i * 0.09)); },
+  ueberholt() { [659, 880, 1175].forEach((f, i) => this.piep(f, 0.12, 0.06, 'triangle', i * 0.08)); }
+};
+
+// Spielt die Melodie der Welt in Dauerschleife, immer ein kleines Stück im Voraus
+const musik = {
+  lied: null, schritt: 0, naechste: 0, uhr: null, schnell: 1,
+  starte(weltNr, boss) {
+    this.stoppe();
+    if (!ton.ctx) return;
+    this.lied = MUSIK[weltNr % MUSIK.length];
+    this.schnell = boss ? 1.18 : 1;
+    this.schritt = 0;
+    this.naechste = ton.ctx.currentTime + 0.1;
+    this.uhr = setInterval(() => this.takt(), 60);
+  },
+  stoppe() {
+    if (this.uhr) clearInterval(this.uhr);
+    this.uhr = null;
+  },
+  takt() {
+    if (!ton.ctx || ton.ctx.state !== 'running') return;
+    const jetzt = ton.ctx.currentTime;
+    const dauer = 60 / (this.lied.bpm * this.schnell) / 2;
+    if (this.naechste < jetzt) this.naechste = jetzt + 0.02;   // Nach einer Unterbrechung nicht alles nachholen
+    while (this.naechste < jetzt + 0.2) {
+      if (daten.musik) this.note(this.schritt, this.naechste - jetzt, dauer);
+      this.schritt++;
+      this.naechste += dauer;
+    }
+  },
+  note(nr, start, dauer) {
+    const hz = n => 440 * Math.pow(2, (n - 69) / 12);
+    const l = this.lied;
+    const takt = Math.floor(nr / 8);
+    const bass = l.bass[takt % l.bass.length];
+    if (nr % 2 === 0) ton.piep(hz(nr % 4 === 0 ? bass : bass + 12), dauer * 1.6, 0.03, 'triangle', start);
+    let hoehe = 0;
+    if (l.lied) hoehe = l.lied[nr % l.lied.length];
+    else {
+      const akkord = l.akkorde[takt % l.akkorde.length];
+      const folge = [0, 1, 2, 1, 2, 0, 1, 2];
+      hoehe = akkord[folge[nr % 8]] + (nr % 16 >= 12 ? 12 : 0);
+    }
+    if (hoehe) ton.piep(hz(hoehe), dauer * 0.85, l.weich ? 0.02 : 0.013, l.weich ? 'triangle' : 'square', start);
+  }
+};
+
+// --------------------------- Level bauen ---------------------------
+
+const kartenIndex = nr => (nr - 1) % LEVEL.length;
+const weltIndex = nr => Math.floor(kartenIndex(nr) / 6) % WELTEN.length;
+const runde = nr => Math.floor((nr - 1) / LEVEL.length);   // Nach Level 30 geht es von vorn weiter, nur härter
+
+let H = 320;
+const bodenY = () => H - BODEN;
+
+// Wo der Boss gerade schwebt. Hängt nur von der Zeit ab, deshalb lässt sich jeder Angriff vorausplanen.
+const bossX = t => B / 2 + Math.sin(t * 0.72) * (B / 2 - 36);
+
+// Baut eine Reihe mit einer Lücke. Die Muschel in der Lücke zeigt den Weg.
+function baueReihe(k, mitte, luecke, versatz, tempo) {
+  for (let x = 9; x < B; x += 17) {
+    if (Math.abs(x - mitte) > luecke / 2 + 7) k.ding({ x, v: tempo, art: k.art() }, versatz);
+  }
+  k.muschel(mitte, versatz, tempo);
+}
+
+// Alle Muster. Jedes plant ein paar Ereignisse ab k.t und sagt, wie lange es dauert.
+const MUSTER = {
+  regen(k) {
+    const n = k.r.ganz(4, 7);
+    for (let i = 0; i < n; i++) k.ding({ x: k.frei(), v: k.v * k.r.von(0.9, 1.2) }, i * 0.52);
+    return n * 0.52 + 0.3;
+  },
+  gezielt(k) {
+    const n = k.r.ganz(3, 4);
+    for (let i = 0; i < n; i++) k.ding({ ziel: true, x: B / 2, v: k.v * 1.2 }, i * 0.8);
+    return n * 0.8 + 0.3;
+  },
+  reihe(k) {
+    baueReihe(k, k.lueckeNach(1.4 / k.d), k.luecke, 0, k.v * 0.92);
+    return 1.5;
+  },
+  doppelreihe(k) {
+    baueReihe(k, k.lueckeNach(1.4 / k.d), k.luecke, 0, k.v * 0.92);
+    baueReihe(k, k.lueckeNach(1.25 / k.d), k.luecke, 1.25, k.v * 0.92);
+    return 2.8;
+  },
+  treppe(k) {
+    // Eine Stufe fehlt immer: Dort kann man einfach stehen bleiben
+    const rechts = k.r() < 0.5;
+    const luecke = k.r.ganz(1, 6);
+    for (let i = 0; i < 8; i++) {
+      if (i !== luecke) k.ding({ x: rechts ? 14 + i * 21.7 : B - 14 - i * 21.7, v: k.v }, i * 0.24);
+    }
+    k.muschel(rechts ? 14 + luecke * 21.7 : B - 14 - luecke * 21.7, luecke * 0.24, k.v);
+    return 2.3;
+  },
+  zange(k) {
+    for (let i = 0; i < 4; i++) {
+      k.ding({ x: 10 + i * 19, v: k.v }, i * 0.32);
+      k.ding({ x: B - 10 - i * 19, v: k.v }, i * 0.32);
+    }
+    k.muschel(B / 2, 0.6, k.v);
+    return 1.9;
+  },
+  zickzack(k) {
+    const phase = k.r.von(0, 6);
+    for (let i = 0; i < 11; i++) k.ding({ x: B / 2 + Math.sin(i * 0.8 + phase) * 66, v: k.v }, i * 0.26);
+    return 3.1;
+  },
+  schnell(k) {
+    const n = k.r.ganz(2, 3);
+    for (let i = 0; i < n; i++) {
+      const x = k.frei();
+      k.ereignis({ typ: 'warn', x }, i * 0.95);
+      k.ding({ x, v: k.v * 2.1 }, i * 0.95 + 0.75);
+    }
+    return n * 0.95 + 0.4;
+  },
+  salve(k) {
+    for (let i = 0; i < 4; i++) {
+      const zeit = k.t + (i * 0.36) / k.d;
+      k.ding({ x: k.gr.boss ? bossX(zeit) : k.frei(), v: k.v * 1.1 }, i * 0.36);
+    }
+    return 2;
+  },
+  moewe(k) {
+    const vonLinks = k.r() < 0.5;
+    const abwuerfe = [k.r.von(30, 60), k.r.von(75, 105), k.r.von(120, 150)];
+    k.ereignis({ typ: 'moewe', richtung: vonLinks ? 1 : -1, y: k.r.von(26, 48), abwuerfe, eiTempo: k.v * 0.95 }, 0);
+    return 1.8;
+  },
+  hopser(k) {
+    const n = k.r.ganz(1, 2);
+    for (let i = 0; i < n; i++) {
+      const vonLinks = k.r() < 0.5;
+      k.ding({ art: 'ball', typ: 'hopf', x: vonLinks ? -8 : B + 8, vx: (vonLinks ? 1 : -1) * k.r.von(44, 66), sprung: k.r.von(205, 245) }, i * 0.9);
+    }
+    return n * 0.9 + 0.7;
+  },
+  kokos(k) {
+    for (let i = 0; i < 3; i++) {
+      const vonLinks = k.r() < 0.5;
+      k.ding({ art: 'kokos', typ: 'hopf', x: vonLinks ? -8 : B + 8, vx: (vonLinks ? 1 : -1) * k.r.von(52, 78), sprung: k.r.von(170, 200) }, i * 0.6);
+    }
+    return 2.2;
+  },
+  blitze(k) {
+    const felder = [18, 54, 90, 126, 162];
+    const erstes = k.r.ganz(0, 4);
+    const anzahl = k.r.ganz(2, 3);
+    for (let i = 0; i < anzahl; i++) {
+      k.ereignis({ typ: 'saeule', art: 'blitz', x: felder[(erstes + i * 2) % 5], breite: 11, warnen: 1.05 }, i * 0.1);
+    }
+    return 1.9;
+  },
+  blitzreihe(k) {
+    // Der Blitz wandert übers Feld, lässt aber immer eine Stelle aus: Dort ist man sicher
+    const rechts = k.r() < 0.5;
+    const luecke = k.r.ganz(1, 4);
+    for (let i = 0; i < 6; i++) {
+      if (i === luecke) continue;
+      k.ereignis({ typ: 'saeule', art: 'blitz', x: rechts ? 15 + i * 30 : B - 15 - i * 30, breite: 11, warnen: 1.05 }, i * 0.36);
+    }
+    return 3.2;
+  },
+  wobbel(k) {
+    const n = k.r.ganz(3, 5);
+    for (let i = 0; i < n; i++) {
+      const amp = k.r.von(14, 30);
+      k.ding({ typ: 'wobbel', x: k.r.von(amp + 10, B - amp - 10), amp, om: k.r.von(1.5, 2.6), v: k.v * 0.88 }, i * 0.72);
+    }
+    return n * 0.72 + 0.3;
+  },
+  quallen(k) {
+    const n = k.r.ganz(3, 4);
+    for (let i = 0; i < n; i++) k.ding({ art: 'qualle', typ: 'puls', x: k.frei(), v: k.v * 0.82 }, i * 0.8);
+    return n * 0.8 + 0.3;
+  },
+  minen(k) {
+    for (let i = 0; i < 2; i++) k.ding({ art: 'mine', typ: 'mine', x: k.r.von(24, B - 24), v: k.v * 0.85, halt: k.r.von(0.36, 0.56) }, i * 1.5);
+    return 3.2;
+  },
+  meteore(k) {
+    for (let i = 0; i < 3; i++) k.ding({ art: 'meteor', typ: 'meteor', x: k.r.von(26, B - 26), v: k.v * 0.95, bruch: k.r.von(0.34, 0.5) }, i * 1.15);
+    return 3.6;
+  },
+  strahl(k) {
+    const start = k.r.von(20, B - 20);
+    const nachRechts = start < B / 2;
+    k.ereignis({ typ: 'strahl', von: start, bis: start + (nachRechts ? 1 : -1) * k.r.von(60, 84), warnen: 0.95, dauer: 1.7 }, 0);
+    return 2.9;
+  },
+  tentakel(k) {
+    const a = k.r.von(22, 70);
+    k.ereignis({ typ: 'saeule', art: 'tentakel', x: a, breite: 13, warnen: 1 }, 0);
+    k.ereignis({ typ: 'saeule', art: 'tentakel', x: a + k.r.von(62, 88), breite: 13, warnen: 1 }, 0.35);
+    return 1.9;
+  }
+};
+
+// Welche Hilfen in welcher Welt herunterfallen können
+const HILFEN_JE_WELT = [
+  ['eimer', 'flossen', 'schnecke'],
+  ['eimer', 'flossen', 'schnecke', 'magnet'],
+  ['eimer', 'flossen', 'schnecke', 'magnet', 'hupe'],
+  ['eimer', 'flossen', 'schnecke', 'magnet', 'hupe', 'mini'],
+  ['eimer', 'flossen', 'schnecke', 'magnet', 'hupe', 'mini']
+];
+
+function baueLevel(nr, stufeName, endlosStufe) {
+  const stufe = STUFEN[stufeName];
+  let zeile, rd, wNr;
+  if (endlosStufe) {
+    // Dauerregen: Welten wechseln sich ab, jede Stufe wird schneller und dichter
+    wNr = (endlosStufe - 1) % WELTEN.length;
+    const vorlage = LEVEL[wNr * 6 + Math.min(4, Math.floor((endlosStufe - 1) / WELTEN.length) + 2)];
+    const steigerung = 1 + (endlosStufe - 1) * 0.022;
+    zeile = Object.assign({}, vorlage, { zeit: 24, tempo: vorlage.tempo * Math.min(steigerung, 1.7), dichte: vorlage.dichte * Math.min(steigerung, 1.6), neu: null });
+    rd = 0;
+  } else {
+    zeile = LEVEL[kartenIndex(nr)];
+    rd = runde(nr);
+    wNr = weltIndex(nr);
+  }
+  const w = WELTEN[wNr];
+  const r = wuerfel(nr * 7919 + (endlosStufe ? 104729 : 0));
+  const plan = [];
+  const k = {
+    r, gr: zeile, t: 0,
+    v: zeile.tempo * stufe.tempo * (1 + rd * 0.1),
+    d: zeile.dichte * stufe.dichte * (1 + rd * 0.08),
+    luecke: 56 * stufe.luecke,
+    letzteLuecke: B / 2,
+    letztesX: B / 2,
+    art: () => r.wahl(zeile.arten),
+    ereignis(ev, versatz) { plan.push(Object.assign({ t: k.t + versatz / k.d }, ev)); },
+    ding(ev, versatz) { k.ereignis(Object.assign({ typ: 'fall', art: k.art() }, ev, { spawn: ev.typ || 'fall', typ: 'ding' }), versatz); },
+    muschel(x, versatz, tempo) { k.ereignis({ typ: 'muschel', x, v: tempo }, versatz); },
+    frei() {
+      let x = 0;
+      do { x = r.von(10, B - 10); } while (Math.abs(x - k.letztesX) < 28);
+      k.letztesX = x;
+      return x;
+    },
+    // Die nächste Lücke liegt immer so, dass man sie von der letzten aus erreichen kann
+    lueckeNach(zeit) {
+      const weit = TEMPO_KALLE * w.flink * (w.griff < 1 ? 0.45 : 0.6) * zeit;
+      const rand = k.luecke / 2 + 4;
+      const x = begrenzt(k.letzteLuecke + r.von(-weit, weit), rand, B - rand);
+      k.letzteLuecke = x;
+      return x;
+    }
+  };
+
+  // Muster aneinanderreihen, aber nie zweimal dasselbe hintereinander
+  let t = 0.3, letztes = '';
+  while (t < zeile.zeit - 2.6) {
+    let name = r.wahl(zeile.muster);
+    if (name === letztes && zeile.muster.length > 1) name = zeile.muster[(zeile.muster.indexOf(name) + 1) % zeile.muster.length];
+    letztes = name;
+    k.t = t;
+    const dauer = MUSTER[name](k);
+    t += (dauer + 0.25) / k.d;
+    // Zwischen den Mustern liegen manchmal ein paar Muscheln auf dem Weg
+    if (r() < 0.5 && name !== 'reihe' && name !== 'doppelreihe') {
+      const start = r.von(26, B - 26), schraeg = r.von(-14, 14);
+      k.t = t - 0.25;
+      for (let i = 0; i < 4; i++) k.muschel(begrenzt(start + i * schraeg, 10, B - 10), i * 0.2, k.v * 0.9);
+    }
+  }
+
+  // Sterne und Hilfen kommen zu festen Zeiten
+  if (!endlosStufe) {
+    for (const anteil of [0.22, 0.52, 0.84]) {
+      // Jeder Stern muss vor dem Feierabend unten ankommen können, auch auf hohen Bildschirmen
+      const tempo = k.v * 0.82;
+      const spaetestens = zeile.zeit - H_MAX / tempo - 1.5;
+      plan.push({ t: Math.min(zeile.zeit * (anteil + r.von(-0.04, 0.04)), spaetestens * (anteil + 0.16)), typ: 'stern', x: r.von(16, B - 16), v: tempo });
+    }
+  }
+  const liste = HILFEN_JE_WELT[wNr];
+  for (let zeit = 7 + r.von(0, 3); zeit < zeile.zeit - 3; zeit += r.von(10, 14)) {
+    plan.push({ t: zeit, typ: 'hilfe', hilfe: r.wahl(liste), x: r.von(16, B - 16), v: k.v * 0.72 });
+  }
+  if (nr > 2 && !endlosStufe && (nr % 2 === 0 || zeile.boss)) {
+    plan.push({ t: zeile.zeit * r.von(0.45, 0.65), typ: 'hilfe', hilfe: 'herz', x: r.von(16, B - 16), v: k.v * 0.72 });
+  }
+  if (endlosStufe && endlosStufe % 3 === 0) plan.push({ t: 12, typ: 'hilfe', hilfe: 'herz', x: r.von(16, B - 16), v: k.v * 0.72 });
+
+  // Der Wind dreht alle paar Sekunden
+  if (zeile.wind) {
+    let richtung = r() < 0.5 ? 1 : -1;
+    for (let zeit = 0; zeit < zeile.zeit; zeit += r.von(6, 9)) {
+      plan.push({ t: zeit, typ: 'wind', wert: richtung * zeile.wind * r.von(30, 42) });
+      richtung = -richtung;
+    }
+  }
+
+  // Was zu spät käme, um noch unten anzukommen, fällt weg: Sonst stünde am Ende "12 von 18 Muscheln" ohne Chance auf alle
+  const moeglich = plan.filter(e => endlosStufe || (e.typ !== 'muschel' && e.typ !== 'hilfe') || e.t < zeile.zeit - H_MAX / e.v - 0.5);
+  plan.length = 0;
+  plan.push(...moeglich);
+  plan.sort((a, b) => a.t - b.t);
+  return {
+    plan, zeit: zeile.zeit, name: zeile.name, boss: zeile.boss || null, dunkel: !!zeile.dunkel, neu: zeile.neu || null, w, wNr,
+    muschelnGesamt: plan.filter(e => e.typ === 'muschel').length
+  };
+}
+
+// --------------------------- Spielzustand ---------------------------
+
+let s = null;
+let modus = 'fenster';
+let letzteZeit = 0, vorrat = 0, malZeit = 0;
+let hudStand = '';
+
+function neuerZustand(startLevel, endlos = false) {
+  const stufe = STUFEN[daten.stufe];
+  return {
+    stufeName: daten.stufe, stufe, level: startLevel, endlos, punkte: 0, herzen: stufe.herzen,
+    kette: 0, extraBei: EXTRA_ALLE, rekordAmStart: fortschritt().rekord, neuFrei: [],
+    ueberholt: new Set(), p: { x: B / 2, vx: 0, lauf: 0, unverwundbar: 0, platt: 0, glibber: 0, blick: 0, wedel: 0 }
+  };
+}
+
+function ladeLevel(nr) {
+  s.level = nr;
+  s.gr = baueLevel(nr, s.stufeName, s.endlos ? nr : 0);
+  // Vor Level 1 bleibt Zeit, die Regeln zu lesen. Neues wird auch kurz erklärt.
+  s.vorlauf = nr === 1 ? 5 : s.gr.neu ? 3 : 2;
+  s.uhr = -s.vorlauf;
+  s.planStelle = 0;
+  s.dinge = []; s.sammel = []; s.moewen = []; s.saeulen = []; s.strahlen = []; s.pfuetzen = [];
+  s.funken = []; s.texte = []; s.warnungen = [];
+  s.blase = null; s.meldung = null; s.abschluss = null;
+  s.wind = 0; s.windZiel = 0; s.schuettel = 0; s.hell = 0;
+  s.sterneHier = 0; s.muschelnHier = 0; s.knappHier = 0; s.trefferHier = 0; s.bonusText = 0; s.gesagt = 0;
+  s.kraft = { eimer: false, flossen: 0, schnecke: 0, magnet: 0, mini: 0 };
+  s.p.vx = 0; s.p.platt = 0; s.p.unverwundbar = 0; s.p.glibber = 0;
+  s.boss = s.gr.boss ? { art: s.gr.boss, zeit: 0, ende: 0 } : null;
+  s.bossRuf = s.boss ? 3.5 : 0;
+  hudStand = '';
+}
+
+// Dauerregen: Die nächste Stufe beginnt ohne Pause, der Krempel von vorher fällt einfach weiter
+function naechsteEndlosStufe() {
+  s.level++;
+  s.gr = baueLevel(s.level, s.stufeName, s.level);
+  s.uhr = 0;
+  s.planStelle = 0;
+  s.wind = 0; s.windZiel = 0;
+  s.pfuetzen = [];
+  melde(s.gr.w.name);
+  if (!wenigBewegung.matches) s.hell = 0.5;
+  punkteDazu(250);
+  musik.starte(s.gr.wNr, false);
+  merkeRekord();
+}
+
+function punkteDazu(wert) {
+  s.punkte += wert * s.stufe.faktor;
+  if (s.punkte >= s.extraBei) {
+    s.extraBei += EXTRA_ALLE;
+    if (s.herzen < HERZEN_MAX) {
+      s.herzen++;
+      melde('EXTRA-HERZ!');
+      ton.hilfe();
+    }
+  }
+  // Eben einen Freund überholt?
+  for (const f of daten.freunde) {
+    if (f.stufe === s.stufeName && s.punkte > f.punkte && !s.ueberholt.has(f.name)) {
+      s.ueberholt.add(f.name);
+      if (s.punkte - wert * s.stufe.faktor <= f.punkte) {
+        melde('VORBEI AN ' + grossName(f.name) + '!');
+        ton.ueberholt();
+      }
+    }
+  }
+}
+
+const faktorKette = () => Math.min(5, 1 + Math.floor(s.kette / 5));
+function melde(text) { s.meldung = { text, zeit: 1.8 }; }
+function schwebeText(text, x, y, farbe = '#ffffff') { if (s.texte.length < 10) s.texte.push({ text, x, y, farbe, zeit: 0.9 }); }
+function sage(text, zeit = 1.2) { s.blase = { text, zeit }; }
+
+function funkenBei(x, y, farbe, anzahl, kraft = 60) {
+  if (s.funken.length > 140) return;
+  for (let i = 0; i < anzahl; i++) {
+    const winkel = Math.random() * Math.PI * 2;
+    const tempo = kraft * (0.3 + Math.random() * 0.7);
+    s.funken.push({ x, y, vx: Math.cos(winkel) * tempo, vy: Math.sin(winkel) * tempo - kraft * 0.3, farbe, zeit: 0.35 + Math.random() * 0.35 });
+  }
+}
+
+// --------------------------- Ein Rechenschritt ---------------------------
+
+function schritt(dt) {
+  malZeit += dt;
+  bewegeEffekte(dt);
+
+  if (s.abschluss) {
+    s.abschluss.zeit -= dt;
+    bewegeDinge(dt * 0.5);
+    s.p.wedel += dt;
+    if (s.abschluss.art === 'feier') {
+      s.p.lauf += dt * 5;
+      s.p.x += Math.sin(s.abschluss.zeit * 7) * 26 * dt;
+      s.p.x = begrenzt(s.p.x, 14, B - 14);
+      if (Math.random() < dt * 14) funkenBei(Math.random() * B, Math.random() * H * 0.45, ['#f2b84b', '#e8503a', '#5fd0e0', '#6cc24a', '#ff8ac0'][Math.floor(Math.random() * 5)], 6, 70);
+    }
+    if (s.abschluss.zeit <= 0) {
+      if (s.abschluss.art === 'feier') zeigeGeschafft();
+      else zeigeEnde();
+    }
+    return;
+  }
+
+  lenke(dt);
+  const welttakt = dt * (s.kraft.schnecke > 0 ? 0.5 : 1);
+  s.uhr += welttakt;
+  if (s.boss) s.boss.zeit = Math.max(0, s.uhr);
+  if (s.bossRuf > 0 && s.uhr > -1.6) s.bossRuf -= dt;
+
+  // Was laut Plan jetzt dran ist
+  const plan = s.gr.plan;
+  while (s.planStelle < plan.length && plan[s.planStelle].t <= s.uhr) spawne(plan[s.planStelle++]);
+
+  bewegeDinge(welttakt);
+  bewegeSaeulen(welttakt);
+  bewegeSammel(dt, welttakt);
+  s.wind += (s.windZiel - s.wind) * Math.min(1, dt * 1.6);
+
+  for (const name of ['flossen', 'schnecke', 'magnet', 'mini']) {
+    if (s.kraft[name] > 0) s.kraft[name] -= dt;
+  }
+
+  if (s.uhr >= s.gr.zeit) {
+    if (s.endlos) naechsteEndlosStufe();
+    else levelFertig();
+  }
+}
+
+function lenke(dt) {
+  const p = s.p;
+  const w = s.gr.w;
+  const imGlibber = s.pfuetzen.some(f => Math.abs(f.x - p.x) < f.b);
+  if (imGlibber && p.glibber <= 0) {
+    ton.glibber();
+    if (!s.blase) sage('IGITT!', 0.8);
+  }
+  p.glibber = imGlibber ? 0.15 : Math.max(0, p.glibber - dt);
+  const vmax = TEMPO_KALLE * w.flink * (s.kraft.flossen > 0 ? 1.35 : 1) * (p.glibber > 0 ? 0.5 : 1);
+  let a = BESCHLEUNIGUNG * w.griff;
+  let wunsch = 0;
+  if (p.platt > 0.3) wunsch = 0;
+  else if (tasten.links !== tasten.rechts) wunsch = tasten.rechts ? vmax : -vmax;
+  else if (zielX !== null) {
+    const dx = zielX - p.x;
+    // Bei wenig Griff rechtzeitig bremsen, sonst schießt Kalle am Finger vorbei
+    wunsch = begrenzt(dx * (w.griff < 1 ? 3.2 + w.griff * 6 : 13), -vmax, vmax);
+    a *= 1.25;
+  }
+  p.vx += begrenzt(wunsch - p.vx, -a * dt, a * dt);
+  p.x += (p.vx + s.wind * 0.3) * dt;
+  if (p.x < 12) { p.x = 12; p.vx = Math.max(0, p.vx); }
+  if (p.x > B - 12) { p.x = B - 12; p.vx = Math.min(0, p.vx); }
+  p.lauf += Math.abs(p.vx) * dt * 0.09;
+  p.wedel += dt;
+  if (p.unverwundbar > 0) p.unverwundbar -= dt;
+  if (p.platt > 0) p.platt -= dt;
+  if (s.blase) { s.blase.zeit -= dt; if (s.blase.zeit <= 0) s.blase = null; }
+}
+
+function spawne(ev) {
+  if (ev.typ === 'ding') {
+    const bild = DINGE[ev.art];
+    const halbB = bild.b * 0.36, halbH = bild.h * 0.36;
+    const x = ev.ziel ? begrenzt(s.p.x, 12, B - 12) : ev.x;
+    const d = {
+      art: ev.art, typ: ev.spawn, x, x0: x, y: -bild.h, v: ev.v || 80, vx: ev.vx || 0, vy: 0, w: halbB, h: halbH, t: 0,
+      dreh: 0, drehV: DREHEND[ev.art] ? (s.dinge.length % 2 ? 1 : -1) * DREHEND[ev.art] : 0,
+      amp: ev.amp, om: ev.om, sprung: ev.sprung, halt: ev.halt, bruch: ev.bruch, warte: 0
+    };
+    if (d.typ === 'hopf') { d.y = H * 0.25; d.vy = 0; }
+    s.dinge.push(d);
+    return;
+  }
+  if (ev.typ === 'muschel') { s.sammel.push({ art: 'muschel', x: ev.x, y: -8, v: ev.v, t: 0, liegt: 0 }); return; }
+  if (ev.typ === 'stern') { s.sammel.push({ art: 'stern', x: ev.x, y: -10, v: ev.v, t: 0, liegt: 0 }); return; }
+  if (ev.typ === 'hilfe') { s.sammel.push({ art: 'hilfe', hilfe: ev.hilfe, x: ev.x, y: -10, v: ev.v, t: 0, liegt: 0 }); return; }
+  if (ev.typ === 'wind') { s.windZiel = ev.wert; return; }
+  if (ev.typ === 'warn') { s.warnungen.push({ x: ev.x, zeit: 0.75 }); ton.warnung(); return; }
+  if (ev.typ === 'moewe') {
+    s.moewen.push({ x: ev.richtung > 0 ? -16 : B + 16, y: ev.y, richtung: ev.richtung, abwuerfe: ev.abwuerfe.slice(), eiTempo: ev.eiTempo, t: 0 });
+    ton.moewe();
+    return;
+  }
+  if (ev.typ === 'saeule') { s.saeulen.push({ art: ev.art, x: ev.x, breite: ev.breite, warnen: ev.warnen, t: 0, geschlagen: false }); return; }
+  if (ev.typ === 'strahl') { s.strahlen.push({ von: ev.von, bis: ev.bis, x: ev.von, warnen: ev.warnen, dauer: ev.dauer, t: 0, an: false }); }
+}
+
+function landet(d) {
+  const boden = bodenY();
+  const p = s.p;
+  funkenBei(d.x, boden - 1, BODEN_STAUB[s.gr.wNr], 3, 34);
+  if (s.abschluss) return;   // Nach dem letzten Herz gibt es keine Punkte mehr
+  if (d.art === 'ei') {
+    s.pfuetzen.push({ x: d.x, b: 13, zeit: 5 });
+    funkenBei(d.x, boden - 2, '#ffe08a', 5, 40);
+    ton.glibber();
+  } else if (d.t % 0.3 < 0.1) ton.plumps();
+  const luft = Math.abs(d.x - p.x) - (d.w + kalleBreite());
+  punkteDazu(10 * faktorKette());
+  if (luft > -1 && luft < KNAPP_ABSTAND && p.platt <= 0 && s.uhr > 0) {
+    s.kette++;
+    s.knappHier++;
+    const wert = 50 * faktorKette();
+    punkteDazu(wert);
+    schwebeText('+' + zahl(wert * s.stufe.faktor), p.x, boden - 36, '#ffe08a');
+    ton.knapp(s.kette);
+    if (s.kette % 5 === 0 && s.kette <= 20) { melde('FAKTOR x' + faktorKette() + '!'); ton.ueberholt(); }
+    s.gesagt--;
+    if (!s.blase && s.gesagt <= 0) {
+      sage(SPRUECHE.knapp[Math.floor(Math.random() * SPRUECHE.knapp.length)], 0.8);
+      s.gesagt = 3;
+    }
+  }
+}
+
+const kalleBreite = () => (s.kraft.mini > 0 ? KALLE_B * 0.6 : KALLE_B);
+
+function bewegeDinge(dt) {
+  const boden = bodenY();
+  const p = s.p;
+  const kalleOben = boden - (s.kraft.mini > 0 ? KALLE_H * 0.6 : KALLE_H);
+  for (const d of s.dinge) {
+    d.t += dt;
+    d.dreh += d.drehV * dt;
+    switch (d.typ) {
+      case 'fall':
+        d.y += d.v * dt;
+        d.x += (d.vx + s.wind) * dt;
+        break;
+      case 'splitter':
+        d.x += d.vx * dt;
+        d.y += d.vy * dt;
+        break;
+      case 'hopf':
+        d.vy += HOPF_SCHWERE * dt;
+        d.y += d.vy * dt;
+        d.x += d.vx * dt;
+        if (d.y + d.h >= boden && d.vy > 0) {
+          d.y = boden - d.h;
+          d.vy = -d.sprung;
+          funkenBei(d.x, boden - 1, BODEN_STAUB[s.gr.wNr], 2, 26);
+          ton.hopf();
+        }
+        break;
+      case 'wobbel':
+        d.y += d.v * dt;
+        d.x = d.x0 + Math.sin(d.t * d.om) * d.amp;
+        break;
+      case 'puls':
+        d.y += d.v * (0.35 + 1.15 * Math.max(0, Math.sin(d.t * 3))) * dt;
+        d.x += Math.sin(d.t * 1.4) * 9 * dt;
+        break;
+      case 'mine':
+        if (d.y < H * d.halt) d.y += d.v * dt;
+        else {
+          d.warte += dt;
+          if (d.warte > 1.05) {
+            d.weg = true;
+            platzen(d);
+          }
+        }
+        break;
+      case 'meteor':
+        d.y += d.v * dt;
+        if (d.y > H * d.bruch) {
+          d.weg = true;
+          brechen(d);
+        }
+        break;
+    }
+
+    // Trifft es Kalle?
+    if (!d.weg && p.unverwundbar <= 0 && d.y + d.h > kalleOben && d.y - d.h < boden && Math.abs(d.x - p.x) < d.w + kalleBreite()) {
+      d.weg = true;
+      getroffen(d.art, d.x);
+      continue;
+    }
+
+    // Unten angekommen oder aus dem Bild?
+    if (d.typ === 'hopf') {
+      if (d.x < -20 || d.x > B + 20) { d.weg = true; punkteDazu(15); }
+    } else if (d.y + d.h >= boden) {
+      d.weg = true;
+      landet(d);
+    } else if (d.x < -24 || d.x > B + 24) {
+      d.weg = true;
+    }
+  }
+  s.dinge = s.dinge.filter(d => !d.weg);
+
+  // Möwen fliegen vorbei und lassen Eier fallen
+  for (const m of s.moewen) {
+    m.t += dt;
+    m.x += m.richtung * 72 * dt;
+    while (m.abwuerfe.length && (m.richtung > 0 ? m.x >= m.abwuerfe[0] : m.x <= m.abwuerfe[m.abwuerfe.length - 1])) {
+      const x = m.richtung > 0 ? m.abwuerfe.shift() : m.abwuerfe.pop();
+      spawne({ typ: 'ding', art: 'ei', spawn: 'fall', x, v: m.eiTempo });
+      s.dinge[s.dinge.length - 1].y = m.y + 6;
+    }
+  }
+  s.moewen = s.moewen.filter(m => m.x > -24 && m.x < B + 24);
+
+  for (const f of s.pfuetzen) f.zeit -= dt;
+  s.pfuetzen = s.pfuetzen.filter(f => f.zeit > 0);
+  for (const w of s.warnungen) w.zeit -= dt;
+  s.warnungen = s.warnungen.filter(w => w.zeit > 0);
+}
+
+// Eine Mine platzt in fünf Splitter, die fächerförmig nach unten fliegen
+function platzen(d) {
+  ton.knall();
+  funkenBei(d.x, d.y, '#ff9a3c', 12, 90);
+  if (!wenigBewegung.matches) s.schuettel = Math.max(s.schuettel, 0.15);
+  for (let i = 0; i < 5; i++) {
+    const winkel = Math.PI * (0.18 + i * 0.16);
+    s.dinge.push({ art: 'splitter', typ: 'splitter', x: d.x, y: d.y, vx: Math.cos(winkel) * 96, vy: Math.sin(winkel) * 96, w: 2.5, h: 2.5, t: 0, dreh: 0, drehV: 0, v: 0 });
+  }
+}
+
+// Ein Meteor bricht in zwei kleine Stücke
+function brechen(d) {
+  ton.knacks();
+  funkenBei(d.x, d.y, '#c8824a', 8, 60);
+  for (const seite of [-1, 1]) {
+    s.dinge.push({ art: 'broecken', typ: 'splitter', x: d.x + seite * 3, y: d.y, vx: seite * 40, vy: d.v * 1.05, w: 3.5, h: 3.5, t: 0, dreh: 0, drehV: seite * 5, v: 0 });
+  }
+}
+
+function bewegeSaeulen(dt) {
+  const p = s.p;
+  for (const a of s.saeulen) {
+    const vorher = a.t;
+    a.t += dt;
+    if (Math.floor(vorher * 6) !== Math.floor(a.t * 6) && a.t < a.warnen) ton.warnung();
+    if (a.t >= a.warnen && !a.geschlagen) {
+      a.geschlagen = true;
+      ton.blitz();
+      if (a.art === 'blitz' && !wenigBewegung.matches) s.hell = Math.max(s.hell, 0.45);
+      funkenBei(a.x, bodenY() - 2, a.art === 'blitz' ? '#ffe08a' : '#c98ae8', 10, 80);
+    }
+    // Der Schlag ist kurz, aber wer drinsteht, wird getroffen
+    if (a.geschlagen && a.t < a.warnen + 0.2 && p.unverwundbar <= 0 && Math.abs(a.x - p.x) < a.breite + kalleBreite() - 2) {
+      getroffen(a.art === 'blitz' ? 'blitz' : 'tentakel', a.x);
+    }
+  }
+  s.saeulen = s.saeulen.filter(a => a.t < a.warnen + 0.32);
+
+  for (const st of s.strahlen) {
+    st.t += dt;
+    if (st.t >= st.warnen && !st.an) { st.an = true; ton.strahl(); }
+    if (st.an) {
+      const anteil = begrenzt((st.t - st.warnen) / st.dauer, 0, 1);
+      st.x = st.von + (st.bis - st.von) * anteil;
+      if (p.unverwundbar <= 0 && Math.abs(st.x - p.x) < 7 + kalleBreite() - 2) getroffen('strahl', st.x);
+      if (Math.random() < dt * 30) funkenBei(st.x, bodenY() - 1, '#7dffb0', 1, 40);
+    }
+  }
+  s.strahlen = s.strahlen.filter(st => st.t < st.warnen + st.dauer);
+}
+
+function getroffen(art, x) {
+  const p = s.p;
+  if (s.kraft.eimer) {
+    s.kraft.eimer = false;
+    p.unverwundbar = 1;
+    ton.klonk();
+    sage('KLONK!', 0.8);
+    funkenBei(p.x, bodenY() - 22, '#5fd0e0', 10, 70);
+    return;
+  }
+  s.herzen--;
+  s.trefferHier++;
+  s.kette = 0;
+  p.unverwundbar = 1.8;
+  p.platt = 0.55;
+  ton.treffer();
+  funkenBei(p.x, bodenY() - 8, FIGUREN[daten.figur].farbe[0], 12, 80);
+  if (!wenigBewegung.matches) s.schuettel = 0.28;
+  sage(TREFFER_SPRUCH[art] || SPRUECHE.treffer[Math.floor(Math.random() * SPRUECHE.treffer.length)], 1.1);
+  // Was direkt daneben fällt, verschwindet: Sonst kommt der nächste Treffer ohne Chance
+  for (const d of s.dinge) {
+    if (Math.abs(d.x - p.x) < 34 && d.y > bodenY() - 70) { d.weg = true; funkenBei(d.x, d.y, '#ffffff', 3, 40); }
+  }
+  if (s.herzen <= 0) {
+    s.herzen = 0;
+    s.saeulen = [];
+    s.strahlen = [];
+    s.abschluss = { art: 'tot', zeit: 1.7 };
+    merkeRekord();
+    musik.stoppe();
+    ton.verloren();
+    sage('ICH GEH NACH HAUSE...', 1.7);
+  }
+}
+
+function bewegeSammel(dt, welttakt) {
+  const p = s.p;
+  const boden = bodenY();
+  for (const m of s.sammel) {
+    m.t += dt;
+    if (m.liegt > 0) {
+      m.liegt -= dt;
+      if (m.liegt <= 0) m.weg = true;
+    } else {
+      m.y += m.v * welttakt;
+      if (m.y >= boden - 7) { m.y = boden - 7; m.liegt = m.art === 'muschel' ? 1.4 : 2.6; }
+    }
+    if (m.art === 'muschel' && s.kraft.magnet > 0) {
+      const dx = p.x - m.x, dy = boden - 12 - m.y;
+      if (dx * dx + dy * dy < 90 * 90) { m.x += dx * dt * 6; m.y += dy * dt * 6; }
+    }
+    if (Math.abs(m.x - p.x) < 15 && m.y > boden - 34) {
+      m.weg = true;
+      nimm(m);
+    }
+  }
+  s.sammel = s.sammel.filter(m => !m.weg);
+}
+
+function nimm(m) {
+  const p = s.p;
+  const boden = bodenY();
+  if (m.art === 'muschel') {
+    s.muschelnHier++;
+    const wert = 25 * faktorKette();
+    punkteDazu(wert);
+    ton.muschel();
+    funkenBei(m.x, m.y, '#ffd7b0', 3, 40);
+  } else if (m.art === 'stern') {
+    s.sterneHier++;
+    punkteDazu(500);
+    ton.stern();
+    melde('STERN ' + s.sterneHier + ' VON 3');
+    funkenBei(m.x, m.y, '#f2b84b', 16, 90);
+  } else {
+    const def = HILFEN[m.hilfe];
+    ton.hilfe();
+    punkteDazu(100);
+    funkenBei(m.x, m.y, '#5fd0e0', 10, 70);
+    schwebeText(def.name, p.x, boden - 40, '#5fd0e0');
+    if (m.hilfe === 'herz') s.herzen = Math.min(HERZEN_MAX, s.herzen + 1);
+    else if (m.hilfe === 'eimer') s.kraft.eimer = true;
+    else if (m.hilfe === 'hupe') {
+      ton.hupe();
+      for (const d of s.dinge) { funkenBei(d.x, d.y, '#ffffff', 4, 60); punkteDazu(20); }
+      s.dinge = [];
+      s.saeulen = [];
+      s.strahlen = [];
+      if (!wenigBewegung.matches) s.hell = 0.3;
+    } else s.kraft[m.hilfe] = def.dauer;
+  }
+}
+
+function bewegeEffekte(dt) {
+  for (const f of s.funken) {
+    f.vy += 170 * dt;
+    f.x += f.vx * dt;
+    f.y += f.vy * dt;
+    f.zeit -= dt;
+  }
+  s.funken = s.funken.filter(f => f.zeit > 0);
+  for (const t of s.texte) { t.y -= 22 * dt; t.zeit -= dt; }
+  s.texte = s.texte.filter(t => t.zeit > 0);
+  if (s.meldung) { s.meldung.zeit -= dt; if (s.meldung.zeit <= 0) s.meldung = null; }
+  if (s.schuettel > 0) s.schuettel -= dt;
+  if (s.hell > 0) s.hell -= dt * 2.2;
+}
+
+function levelFertig() {
+  const f = fortschritt();
+  const welle = s.dinge.length;
+  for (const d of s.dinge) funkenBei(d.x, d.y, '#ffffff', 3, 50);
+  for (const m of s.sammel) funkenBei(m.x, m.y, '#ffe08a', 2, 40);
+  s.dinge = []; s.saeulen = []; s.strahlen = []; s.moewen = []; s.sammel = [];
+  const bonus = (300 + s.level * 40 + s.herzen * 100 + (s.trefferHier === 0 ? 500 : 0));
+  s.bonusText = bonus * s.stufe.faktor;
+  punkteDazu(bonus + welle * 10);
+  s.abschluss = { art: 'feier', zeit: 2.1 };
+  if (s.boss) { s.boss.ende = 1; }
+  sage(SPRUECHE.feier[Math.floor(Math.random() * SPRUECHE.feier.length)], 2);
+  musik.stoppe();
+  ton.geschafft();
+
+  const vorher = sterneGesamt();
+  f.frei = Math.max(f.frei, Math.min(s.level + 1, LEVEL.length));
+  f.sterne[kartenIndex(s.level) + 1] = Math.max(f.sterne[kartenIndex(s.level) + 1] || 0, s.sterneHier);
+  const jetzt = sterneGesamt();
+  s.neuFrei = Object.keys(FIGUREN).filter(n => FIGUREN[n].sterne > vorher && FIGUREN[n].sterne <= jetzt);
+  merkeRekord();
+  speichere();
+}
+
+function merkeRekord() {
+  const f = fortschritt();
+  if (s.punkte > f.rekord) {
+    f.rekord = Math.floor(s.punkte);
+    f.rekordLevel = s.level;
+  }
+  if (s.endlos) f.rekordEndlos = Math.max(f.rekordEndlos, Math.floor(s.punkte));
+  speichere();
+}
+
+const FARBEN = {
+  k: '#1a1820', w: '#ffffff', g: '#a8aebb', G: '#5e6472', D: '#3a3f4c', b: '#8a5a36', B: '#5c3a22', l: '#c9925a',
+  y: '#f2b84b', Y: '#ffe08a', O: '#d8862c', r: '#e8503a', R: '#a82c24', o: '#f2925b', p: '#ff8ac0', P: '#c94f8a',
+  c: '#5fd0e0', C: '#2a8fa8', n: '#3a7bd5', N: '#24508f', e: '#6cc24a', E: '#3c8a36', v: '#a070e8', V: '#6a3fb0',
+  s: '#e8dcc0', S: '#b8a888', t: '#ffd7b0', m: '#7dffb0'
+};
+
+const BILDER = {
+  kiste: [
+    'BBBBBBBBBBBBBB', 'BllllllllllllB', 'BlBbbbbbbbbBlB', 'BlbBbbbbbbBblB', 'BlbbBbbbbBbblB', 'BlbbbBbbBbbblB', 'BlbbbbBBbbbblB',
+    'BlbbbbBBbbbblB', 'BlbbbBbbBbbblB', 'BlbbBbbbbBbblB', 'BlbBbbbbbbBblB', 'BlBbbbbbbbbBlB', 'BllllllllllllB', 'BBBBBBBBBBBBBB'
+  ],
+  stiefel: [
+    '..kkkkkkk...', '.kYYYYYYYk..', '.kyyyyyyyk..', '.kkkkkkkkk..', '..kyyyyyk...', '..kYyyyyk...', '..kYyyyyk...', '..kYyyyykkk.',
+    '..kYyyyyyyyk', '..kYyyyyyyyk', '..kOOOOOOOOk', '..kkkkkkkkkk'
+  ],
+  fisch: [
+    '...kkkkkk...kk', '..kccccccc.kck', '.kcwwcCcccckck', '.kcwkcCcccccck', 'kccccCcccccck.', 'kCCCcCccccccck',
+    '.kCCCCcccckkck', '..kCCCCCCk.kCk', '...kkkkkk...kk'
+  ],
+  dose: [
+    '.kkkkkkk.', 'kgggggggk', 'kkkkkkkkk', 'krrrrrrrk', 'krwwrrrRk', 'krwwrrrRk', 'krrrwwrRk', 'krrrwwrRk', 'krrrrrrRk', 'kgggggGGk', '.kkkkkkk.'
+  ],
+  anker: [
+    '.....DDD.....', '....D...D....', '....D...D....', '.....DDD.....', '...DDDgDDD...', '.....DgD.....', '.....DgD.....', 'D....DgD....D',
+    'DD...DgD...DD', 'DgD..DgD..DgD', '.DgD.DgD.DgD.', '..DgDDgDDgD..', '...DDgggDD...', '.....DDD.....'
+  ],
+  ei: ['..kkk..', '.kwwwk.', 'kwwwwwk', 'kwwwwsk', 'kwwswsk', 'kwwwssk', '.kwssk.', '..kkk..'],
+  ball: [
+    '....kkkkkk....', '..kkrrwwnnkk..', '.krrrrwwnnnnk.', '.krrrrwwnnnnk.', 'kyyrrrwwnnnwwk', 'kyyyyrwwnwwwwk', 'kyyyyywwwwwwwk',
+    'kyyyyywwwwwwwk', 'kyyyyewwcwwwwk', 'kyyeeewwcccwwk', '.keeeewwccccck.', '.keeeewwccccck.', '..kkeewwcckk..', '....kkkkkk....'
+  ],
+  kokos: ['...kkkk...', '.kkBBBBkk.', 'kBBbBBBBBk', 'kBkBBkBBBk', 'kBBBBBBbBk', 'kBBkBBBBBk', 'kbBBBBbBBk', 'kBBBBBBBBk', '.kkBBBBkk.', '...kkkk...'],
+  eis: ['..kkkk..', '.kppppk.', 'kppwpppk', 'kpppppPk', 'kpppPPPk', '.kkkkkk.', '.kllbbk.', '.klbblk.', '..kbbk..', '..kllk..', '..kbbk..', '...kk...'],
+  flipflop: ['..kkkkk..', '.knnnnnk.', 'kncnnncnk', 'knncwcnnk', 'knnnwnnnk', 'knnnnnnnk', 'knnnnnnnk', 'knnnnnnnk', '.knnnnnk.', '.knnnnnk.', '.knnnnnk.', '..kkkkk..'],
+  schaufel: ['...kkk...', '...kek...', '...kek...', '...kek...', '...kek...', '...kek...', '.kkkekkk.', 'keeeeeeek', 'keEEEEEek', 'keEEEEEek', '.keEEEek.', '..kkkkk..'],
+  ente: ['...kkkk.....', '..kyyyyk....', '.kyykyyOOk..', '.kyyyyyOOOk.', '..kyyyykkk..', 'k..kyyk.....', 'kykkyyyykk..', 'kyyyyyyyyyk.', 'kyyyOyyyyyk.', '.kyyOOOyyk..', '..kkkkkkk...'],
+  schirm: ['......kk......', '....kkrrkk....', '..kkrrwwrrkk..', '.krrrrwwrrrrk.', 'krrrrrwwrrrrrk', 'kkkkkkkkkkkkkk', '......kk......', '......kk......', '......kk......', '......kk......', '..k...kk......', '..kk.kk.......', '...kkk........'],
+  ziegel: ['kkkkkkkkkkkk', 'krrrrrrrrrrk', 'krRrrRrrRrrk', 'kRRRRRRRRRRk', 'kkkkkkkkkkkk'],
+  fass: ['..kkkkkkkk..', '.kblllllbbk.', 'kGGGGGGGGGGk', 'kbllbbbbbbBk', 'kbllbbbbbbBk', 'kbllbbbbbbBk', 'kbllbbbbbbBk', 'kbllbbbbbbBk', 'kbllbbbbbbBk', 'kGGGGGGGGGGk', '.kblllbbbbk.', '..kkkkkkkk..'],
+  zwerg: ['....kk....', '...krrk...', '...krrk...', '..krrrrk..', '..krrrrk..', '.krrrrrrk.', '.kkkkkkkk.', '.ktktktkk.', '.ktttttkk.', '.kwwwwwwk.', '.kwwwwwwk.', 'knkwwwwknk', 'knnkwwknnk', '.knnnnnnk.', '.kbbkkbbk.', '.kkk..kkk.'],
+  kuh: ['.kk.........k.k.', 'kwwk.kkkkkkkkwk.', 'kwkwkkwwwkkwwwk.', 'kwwwwwwwkkkwwwkk', 'kwwwwwwwwwwwwkpk', 'kkwkkwwwwwkkwkpk', 'kkkkkwwwwkkkwwkk', '.kwwwwwwwkkkwwk.', '.kwkkwkkkkkwkwk.', '.kwkkwk...kwkwk.', '.kkk.kk...kk.kk.'],
+  flasche: ['..kkk.', '..kBk.', '..kck.', '..kck.', '.kCcck', 'kCccck', 'kCwwck', 'kCwsck', 'kCwsck', 'kCwwck', 'kCccck', 'kCccck', '.kkkk.'],
+  qualle: ['...kkkkkk...', '..kppppppk..', '.kpwwppppPk.', '.kpwppppPPk.', 'kppppppppPPk', 'kPPPPPPPPPPk', '.kkkkkkkkkk.', '.kp.kp.kp.k.', '.kp.kp.kp.k.', '..kp.kp.kp..', '..kp.kp.kp..', '.kp.kp.kp...', '.k..k..k....'],
+  kugelfisch: ['...k.k.k....', '.k.kkkkkk.k.', '..kyyyyyyk..', 'kkyywyyywykk', '.kyykyyykyk.', 'kkyyyyyyyykk', '.kyyyOOOyyk.', 'kkyyOkkOyykk', '.kyyyOOyyyk.', '..kyyyyyyk..', '.k.kkkkkk.k.', '...k.k.k....'],
+  mine: ['.....kkk.....', '.k..kGGGk..k.', '..kkGGGGGkk..', '..kGgGGGGGk..', '.kGgGGGGGGGk.', 'kGGGGGGGGGGGk', 'kGGGGGGGGGGGk', 'kGGGGGGGGGGGk', '.kGGGGGGGGGk.', '..kGGGGGGGk..', '..kkGGGGGkk..', '.k..kGGGk..k.', '.....kkk.....'],
+  meteor: ['....kkkkk.....', '..kkOlOOOkk...', '.kOlOOOBOOOk..', '.klOOBOOOOOOk.', 'kOOOOOOOOBOOk.', 'kOBBOOOOOOOOOk', 'kOBBOOOOBBOOOk', 'kOOOOOOOBBOOOk', 'kOOOOBOOOOOOk.', '.kOOOOOOOOOOk.', '.kbOOOOOBOOk..', '..kkbOOOOkk...', '....kkkkk.....'],
+  broecken: ['.kkkk.', 'kOlOOk', 'kOOOBk', 'kOBOOk', 'kOOObk', '.kkkk.'],
+  splitter: ['.kkk.', 'kOYOk', 'kYYYk', 'kOYOk', '.kkk.'],
+  toaster: ['...ktttk....', '...ktltk.tk.', '.kkkkkkkkkk.', 'kgggggggggGk', 'kgwgggggggGk', 'kgggkkkkkgGk', 'kgggggggggGk', 'kgggggggggGk', 'kGGGGGGGGGGk', 'kkkkkkkkkkkk', '.kk......kk.'],
+  satellit: ['nnnk.....knnn...', 'nNnk.kkk.knNn...', 'nnnkkgggkknnn...', 'nNnkgggggknNn...', 'nnnkkgggkknnn...', 'nNnk.kkk.knNn...', 'nnnk..k..knnn...', '......k.........'],
+  socke: ['.kkkkkk..', 'kwrrrrwk.', 'kwwwwwwk.', 'kwrrrrwk.', 'kwwwwwwk.', 'kwrrrrwk.', 'kwwwwwwkk', 'kwrrrrrwwk', 'kwwwwwwwwk', '.kkkkkkkk.'],
+  klo: ['kkkkkk......', 'kwwwwk......', 'kwgwwk......', 'kwwwwk......', 'kwwwwkkkkkkk', 'kwwwwkwwwwwk', 'kkwwwwwwwwwk', '.kkwwwwgggwk', '..kkwwwwwwkk', '...kwwwwkk..', '...kwwwk....', '..kkwwwkk...', '..kkkkkkk...']
+};
+
+const HILFE_BILDER = {
+  eimer: ['..kkkkk..', '.k.....k.', 'knnnnnnnk', 'kncnnnnNk', 'kncnnnnNk', '.kcnnnNk.', '.knnnnNk.', '.kkkkkkk.'],
+  flossen: ['.k.....k.', 'kek...kek', 'kek...kek', 'keEk.kEek', 'keEk.kEek', 'keeEkEeek', 'keeekeeek', '.kkk.kkk.'],
+  schnecke: ['...kkk...', '..kOyOk..', '.kyOOOyk.', '.kOyyyOk.', 'k.kOOOk.k', 'kekkkkkek', 'keeeeeeek', '.kkkkkkk.'],
+  magnet: ['..kkkkk..', '.krrrrrk.', 'krrkkkrrk', 'krk...krk', 'krk...krk', 'kwk...kwk', 'kwk...kwk', 'kkk...kkk'],
+  mini: ['...kkk...', '...kGk...', '..kkkkk..', '..kpwpk..', '.kppppPk.', '.kppwpPk.', '.kpppPPk.', '..kkkkk..'],
+  hupe: ['.......kk', '.....kkyk', '...kkyyyk', 'kkkyyyyyk', 'kyyyyyyyk', 'kOOOyyyyk', 'kkkOOOOOk', '...kkkOOk'],
+  herz: ['.kk...kk.', 'krrk.krrk', 'krwrkrrRk', 'krrrrrrRk', '.krrrrRk.', '..krrRk..', '...krk...', '....k....']
+};
+
+const STERN_BILD = ['.....k.....', '....kYk....', '....kYk....', 'kkkkYYYkkkk', 'kYYYYYyyyyk', '.kYYYYyyyk.', '..kYYyyyk..', '.kYYYkyyyk.', '.kYYk.kyyk.', 'kYk.....kyk', 'kk.......kk'];
+const MUSCHEL_BILD = ['...kkk...', '.kktptkk.', 'ktktptktk', 'kttkpktpk', 'kttkpktpk', '.ktkpktk.', '..kkkkk..'];
+const HERZ_BILD = ['.kk.kk.', 'krrkrrk', 'krwrrRk', 'krrrrRk', '.krrRk.', '..kRk..', '...k...'];
+const HERZ_LEER = ['.kk.kk.', 'kDDkDDk', 'kDDDDDk', 'kDDDDDk', '.kDDDk.', '..kDk..', '...k...'];
+
+
+// Diese Gegenstände drehen sich beim Fallen
+const DREHEND = { kiste: 1.3, stiefel: 2.2, fisch: 2.6, dose: 3, anker: 0.9, eis: 2, flipflop: 3.4, schaufel: 2.6, ente: 1.8, schirm: 1.4, ziegel: 3.6, fass: 1.6, zwerg: 2.8, kuh: 1.6, flasche: 1.5, toaster: 2, satellit: 1.2, socke: 3, klo: 1.4, kugelfisch: 0.8, meteor: 1.4, ball: 2.4, kokos: 3.4 };
+const BODEN_STAUB = ['#c9925a', '#f6dfa0', '#6a7288', '#c9b27a', '#a8a8b8'];
+
+// Die Farbregel des Spiels: Grün und Gold im Kreis = einsammeln, roter Schein = ausweichen
+const FARBE_GUT = '#19c26b', FARBE_STERN = '#ffb400', FARBE_GEFAHR = 'rgba(255, 36, 36, 0.95)';
+
+const hexZuRgb = f => [parseInt(f.slice(1, 3), 16), parseInt(f.slice(3, 5), 16), parseInt(f.slice(5, 7), 16)];
+
+// Macht aus groben Pixeln weiche Bilder: Jede Runde verdoppelt die Größe und rundet Ecken ab
+function glaettePixel(zeilen, runden = 3) {
+  const breite = Math.max(...zeilen.map(z => z.length));
+  let feld = zeilen.map(z => z.padEnd(breite, '.').split(''));
+  for (let n = 0; n < runden; n++) {
+    const h = feld.length, b = feld[0].length;
+    const neu = Array.from({ length: h * 2 }, () => new Array(b * 2));
+    const an = (x, y) => (x < 0 || y < 0 || x >= b || y >= h ? '.' : feld[y][x]);
+    for (let y = 0; y < h; y++) {
+      for (let x = 0; x < b; x++) {
+        const e = feld[y][x], o = an(x, y - 1), u = an(x, y + 1), l = an(x - 1, y), r = an(x + 1, y);
+        const anders = o !== u && l !== r;
+        neu[y * 2][x * 2] = anders && l === o ? l : e;
+        neu[y * 2][x * 2 + 1] = anders && o === r ? r : e;
+        neu[y * 2 + 1][x * 2] = anders && l === u ? l : e;
+        neu[y * 2 + 1][x * 2 + 1] = anders && u === r ? r : e;
+      }
+    }
+    feld = neu;
+  }
+  const l = document.createElement('canvas');
+  l.width = feld[0].length;
+  l.height = feld.length;
+  const c = l.getContext('2d');
+  const bild = c.createImageData(l.width, l.height);
+  const rgb = {};
+  for (const [k, f] of Object.entries(FARBEN)) rgb[k] = hexZuRgb(f);
+  feld.forEach((zeile, y) => zeile.forEach((zeichen, x) => {
+    const f = rgb[zeichen];
+    if (!f) return;
+    const o = (y * l.width + x) * 4;
+    bild.data[o] = f[0];
+    bild.data[o + 1] = f[1];
+    bild.data[o + 2] = f[2];
+    bild.data[o + 3] = 255;
+  }));
+  c.putImageData(bild, 0, 0);
+  return l;
+}
+
+// Gegenstände zum Ausweichen bekommen einen roten Schein, der fest im Bild steckt
+const SCHEIN_RAND = 4;
+function baueGefahr(zeilen) {
+  const glatt = glaettePixel(zeilen);
+  const rand = SCHEIN_RAND * 8;
+  const l = document.createElement('canvas');
+  l.width = glatt.width + rand * 2;
+  l.height = glatt.height + rand * 2;
+  const c = l.getContext('2d');
+  c.shadowColor = FARBE_GEFAHR;
+  c.shadowBlur = 15;
+  c.drawImage(glatt, rand, rand);
+  c.drawImage(glatt, rand, rand);
+  c.shadowBlur = 5;
+  c.drawImage(glatt, rand, rand);
+  return { bild: l, b: glatt.width / 8, h: glatt.height / 8 };
+}
+
+const DINGE = {};
+for (const [name, zeilen] of Object.entries(BILDER)) DINGE[name] = baueGefahr(zeilen);
+const HILFE_PIXEL = {};
+for (const [name, zeilen] of Object.entries(HILFE_BILDER)) HILFE_PIXEL[name] = glaettePixel(zeilen);
+const STERN_PIXEL = glaettePixel(STERN_BILD), MUSCHEL_PIXEL = glaettePixel(MUSCHEL_BILD);
+const HERZ_PIXEL = glaettePixel(HERZ_BILD), HERZ_LEER_PIXEL = glaettePixel(HERZ_LEER);
+
+// Weicher Lichthof um alles, was man einsammeln soll
+function baueHof(farbe) {
+  const l = document.createElement('canvas');
+  l.width = l.height = 96;
+  const c = l.getContext('2d');
+  const v = c.createRadialGradient(48, 48, 12, 48, 48, 48);
+  v.addColorStop(0, farbe);
+  v.addColorStop(1, farbe + '00');
+  c.fillStyle = v;
+  c.fillRect(0, 0, 96, 96);
+  return l;
+}
+const HOF_GUT = baueHof(FARBE_GUT), HOF_STERN = baueHof(FARBE_STERN);
+
+// --------------------------- Zeichen-Helfer ---------------------------
+
+function oval(c, x, y, rx, ry, farbe, rand, dicke = 0.8) {
+  c.beginPath();
+  c.ellipse(x, y, rx, ry, 0, 0, Math.PI * 2);
+  if (farbe) { c.fillStyle = farbe; c.fill(); }
+  if (rand) { c.strokeStyle = rand; c.lineWidth = dicke; c.stroke(); }
+}
+
+function eckig(c, x, y, b, h, r, farbe, rand, dicke = 0.8) {
+  c.beginPath();
+  c.moveTo(x + r, y);
+  c.arcTo(x + b, y, x + b, y + h, r);
+  c.arcTo(x + b, y + h, x, y + h, r);
+  c.arcTo(x, y + h, x, y, r);
+  c.arcTo(x, y, x + b, y, r);
+  c.closePath();
+  if (farbe) { c.fillStyle = farbe; c.fill(); }
+  if (rand) { c.strokeStyle = rand; c.lineWidth = dicke; c.stroke(); }
+}
+
+function strich(c, farbe, dicke, ...punkte) {
+  c.beginPath();
+  c.moveTo(punkte[0], punkte[1]);
+  for (let i = 2; i < punkte.length; i += 2) c.lineTo(punkte[i], punkte[i + 1]);
+  c.strokeStyle = farbe;
+  c.lineWidth = dicke;
+  c.lineCap = 'round';
+  c.lineJoin = 'round';
+  c.stroke();
+}
+
+function bogen(c, farbe, dicke, x0, y0, sx, sy, x1, y1) {
+  c.beginPath();
+  c.moveTo(x0, y0);
+  c.quadraticCurveTo(sx, sy, x1, y1);
+  c.strokeStyle = farbe;
+  c.lineWidth = dicke;
+  c.lineCap = 'round';
+  c.stroke();
+}
+
+function flaeche(c, farbe, rand, ...punkte) {
+  c.beginPath();
+  c.moveTo(punkte[0], punkte[1]);
+  for (let i = 2; i < punkte.length; i += 2) c.lineTo(punkte[i], punkte[i + 1]);
+  c.closePath();
+  if (farbe) { c.fillStyle = farbe; c.fill(); }
+  if (rand) { c.strokeStyle = rand; c.lineWidth = 0.8; c.lineJoin = 'round'; c.stroke(); }
+}
+
+function balken(c, farbe, ...liste) {
+  c.fillStyle = farbe;
+  for (const [x, y, b, h] of liste) c.fillRect(x, y, b, h);
+}
+
+function verlauf(c, y0, y1, farben) {
+  const v = c.createLinearGradient(0, y0, 0, y1);
+  farben.forEach((f, i) => v.addColorStop(i / (farben.length - 1), f));
+  c.fillStyle = v;
+  c.fillRect(0, y0, B, y1 - y0);
+}
+
+function schleier(c, y0, y1, farbe) {
+  c.fillStyle = farbe;
+  c.fillRect(0, y0, B, y1 - y0);
+}
+
+function wolke(c, x, y, farbe, g = 1) {
+  oval(c, x - 11 * g, y, 8 * g, 4.5 * g, farbe);
+  oval(c, x, y - 2.5 * g, 10 * g, 6.5 * g, farbe);
+  oval(c, x + 10 * g, y, 8.5 * g, 4.5 * g, farbe);
+  balken(c, farbe, [x - 11 * g, y, 22 * g, 4.5 * g]);
+}
+
+// --------------------------- Kalle ---------------------------
+
+// Zeichnet die Krabbe im Bereich 44 x 36, die Füße stehen unten in der Mitte
+function malKrabbe(c, o) {
+  const [haupt, dunkel, hell] = FIGUREN[o.figur].farbe;
+  const mx = 22;
+  const lauf = o.lauf || 0;
+  const rand = '#3a1418';
+
+  // Beine
+  for (const seite of [-1, 1]) {
+    for (let i = 0; i < 3; i++) {
+      const heben = Math.max(0, Math.sin(lauf * Math.PI * 2 + i * 2.1 + (seite > 0 ? 1.5 : 0))) * 2;
+      const hx = mx + seite * (6.5 + i * 1.7), hy = 28 + i * 0.3;
+      const kx = mx + seite * (12 + i * 2.6), ky = 25.5 + i * 1.3 - heben;
+      const fx = mx + seite * (13.5 + i * 3.1), fy = 35 - heben;
+      bogen(c, rand, 2, hx, hy, kx, ky - 1, fx, fy);
+      bogen(c, dunkel, 1.1, hx, hy, kx, ky - 1, fx, fy);
+    }
+  }
+
+  // Scheren
+  const auf = o.schereAuf ? 0.85 : 0.42;
+  for (const seite of [-1, 1]) {
+    const hoch = Math.sin((o.wedel || 0) * 5 + (seite > 0 ? 1.4 : 0)) * (o.tanzt ? 2.4 : 0.6) - (o.schereHoch ? 3 : 0);
+    const cx = mx + seite * 16, cy = 14.5 + hoch;
+    bogen(c, rand, 3.4, mx + seite * 9, 25.5, mx + seite * 16.5, 26, cx, cy + 3);
+    bogen(c, haupt, 2, mx + seite * 9, 25.5, mx + seite * 16.5, 26, cx, cy + 3);
+    c.save();
+    c.translate(cx, cy);
+    c.rotate(seite * 0.22);
+    c.beginPath();
+    c.arc(0, 0, 4.7, -Math.PI / 2 + auf, -Math.PI / 2 - auf + Math.PI * 2);
+    c.lineTo(0, 0.6);
+    c.closePath();
+    c.fillStyle = haupt;
+    c.fill();
+    c.strokeStyle = rand;
+    c.lineWidth = 0.9;
+    c.lineJoin = 'round';
+    c.stroke();
+    oval(c, -1.5, 1.3, 1.4, 1, hell);
+    c.restore();
+  }
+
+  // Augenstiele hinter dem Körper
+  const blick = begrenzt(o.blick || 0, -1, 1);
+  const blickY = o.blickHoch ? -0.9 : 0.2;
+  for (const seite of [-1, 1]) {
+    const ex = mx + seite * 5.2;
+    strich(c, rand, 2.6, mx + seite * 4, 22, ex, 13);
+    strich(c, haupt, 1.4, mx + seite * 4, 22, ex, 13);
+  }
+
+  // Körper
+  const verl = c.createLinearGradient(0, 18, 0, 32);
+  verl.addColorStop(0, hell);
+  verl.addColorStop(0.32, haupt);
+  verl.addColorStop(1, dunkel);
+  oval(c, mx, 25, 11.4, 6.9, verl, rand, 0.95);
+  oval(c, mx - 4, 21.2, 4.2, 1.2, 'rgba(255, 255, 255, 0.55)');
+  oval(c, mx + 6.5, 23, 0.9, 0.7, dunkel);
+  oval(c, mx + 4.5, 21.2, 0.7, 0.5, dunkel);
+  oval(c, mx - 7.4, 25, 1.7, 1, 'rgba(255, 150, 150, 0.6)');
+  oval(c, mx + 7.4, 25, 1.7, 1, 'rgba(255, 150, 150, 0.6)');
+
+  // Augen
+  for (const seite of [-1, 1]) {
+    const ex = mx + seite * 5.2, ey = 10.8;
+    oval(c, ex, ey, 3.7, 3.7, '#ffffff', '#1a1820', 0.8);
+    if (o.mund === 'tot') {
+      strich(c, '#1a1820', 0.8, ex - 1.5, ey - 1.5, ex + 1.5, ey + 1.5);
+      strich(c, '#1a1820', 0.8, ex + 1.5, ey - 1.5, ex - 1.5, ey + 1.5);
+    } else {
+      oval(c, ex + blick * 1.3, ey + blickY, 1.7, 1.7, '#1a1820');
+      oval(c, ex + blick * 1.3 - 0.5, ey + blickY - 0.6, 0.55, 0.55, '#ffffff');
+    }
+  }
+
+  // Mund
+  const mund = o.mund || 'lachen';
+  if (mund === 'lachen') {
+    c.beginPath();
+    c.arc(mx, 24.3, 3.3, 0.25, Math.PI - 0.25);
+    c.strokeStyle = '#1a1820';
+    c.lineWidth = 0.8;
+    c.lineCap = 'round';
+    c.stroke();
+  } else if (mund === 'oh' || mund === 'tot') {
+    oval(c, mx, 26.4, 1.9, 2.1, '#1a1820');
+    oval(c, mx, 27.3, 1.1, 1, '#ff8a8a');
+  } else if (mund === 'jubel') {
+    c.beginPath();
+    c.arc(mx, 24.8, 3.8, 0, Math.PI);
+    c.closePath();
+    c.fillStyle = '#1a1820';
+    c.fill();
+    oval(c, mx, 27.4, 1.9, 1, '#ff8a8a');
+  }
+
+  // Was jede Figur Besonderes trägt
+  const extra = FIGUREN[o.figur].extra;
+  if (extra === 'schleife') {
+    flaeche(c, '#ffe08a', '#1a1820', mx, 18.5, mx - 4.5, 15.8, mx - 4.5, 21, mx, 18.5, mx + 4.5, 15.8, mx + 4.5, 21);
+    oval(c, mx, 18.5, 1.3, 1.3, '#d8862c', '#1a1820', 0.6);
+  } else if (extra === 'muetze') {
+    eckig(c, mx - 3.4, 12.5, 6.8, 4.2, 1.6, '#ffffff', '#1a1820');
+    balken(c, '#24508f', [mx - 3.1, 15.6, 6.2, 1.3]);
+    eckig(c, mx - 4.4, 16.8, 8.8, 1.8, 0.8, '#1a1820');
+    oval(c, mx, 14.2, 0.9, 0.9, '#f2b84b');
+  } else if (extra === 'pirat') {
+    flaeche(c, '#1a1820', null, mx - 4.6, 19, mx + 4.6, 19, mx + 3, 13.5, mx, 15, mx - 3, 13.5);
+    oval(c, mx, 16.8, 1, 1, '#ffffff');
+    oval(c, mx - 5.2, 10.8, 3.8, 3.8, '#1a1820');
+    strich(c, '#1a1820', 0.7, mx - 8.8, 8.6, mx - 1.4, 12.8);
+  } else if (extra === 'brille') {
+    eckig(c, mx - 9.6, 8.6, 8.4, 5, 1.6, '#1a1820');
+    eckig(c, mx + 1.2, 8.6, 8.4, 5, 1.6, '#1a1820');
+    strich(c, '#1a1820', 1, mx - 1.2, 10, mx + 1.2, 10);
+    strich(c, '#ff8ac0', 0.8, mx - 8, 10, mx - 6, 10);
+    strich(c, '#ff8ac0', 0.8, mx + 2.8, 10, mx + 4.8, 10);
+    const blitz = Math.sin((o.wedel || 0) * 6) > 0 ? -1 : 1;
+    strich(c, '#ffe08a', 0.8, mx + blitz * 13.5, 3, mx + blitz * 13.5, 6.5);
+    strich(c, '#ffe08a', 0.8, mx + blitz * 11.8, 4.8, mx + blitz * 15.2, 4.8);
+  } else if (extra === 'helm') {
+    oval(c, mx, 11, 11.5, 9.6, 'rgba(190, 234, 245, 0.28)', '#bfeaf5', 1);
+    bogen(c, '#ffffff', 0.9, mx + 5, 4, mx + 9, 5.5, mx + 9.6, 9);
+  }
+
+  // Der Eimerhelm
+  if (o.eimer) {
+    bogen(c, '#ffffff', 0.9, mx - 7, 3.2, mx, -3, mx + 7, 3.2);
+    flaeche(c, '#3a7bd5', '#1a1820', mx - 8.6, 2.5, mx + 8.6, 2.5, mx + 7.2, 10, mx - 7.2, 10);
+    balken(c, '#5fd0e0', [mx - 6.2, 3.8, 2, 5]);
+    balken(c, '#24508f', [mx + 4.4, 3.8, 2, 5.8]);
+  }
+}
+
+// Zeichnet die Krabbe scharf in eine eigene Leinwand, zum Beispiel im Menü
+function kalleInLeinwand(leinwand, o) {
+  const c = leinwand.getContext('2d');
+  c.setTransform(1, 0, 0, 1, 0, 0);
+  c.clearRect(0, 0, leinwand.width, leinwand.height);
+  const e = leinwand.width / 44;
+  c.setTransform(e, 0, 0, e, 0, 0);
+  malKrabbe(c, o);
+  c.setTransform(1, 0, 0, 1, 0, 0);
+}
+
+function zeichneKalle(c) {
+  const p = s.p;
+  const boden = bodenY();
+  const tot = s.abschluss && s.abschluss.art === 'tot';
+  const feier = s.abschluss && s.abschluss.art === 'feier';
+
+  // Nächste Gefahr anschauen und erschrecken, wenn es eng wird
+  let naechste = null, naechsterAbstand = 1e9;
+  for (const d of s.dinge) {
+    const a = Math.abs(d.x - p.x) + Math.max(0, boden - d.y) * 0.5;
+    if (a < naechsterAbstand) { naechsterAbstand = a; naechste = d; }
+  }
+  const angst = naechste && naechsterAbstand < 42;
+  const blick = naechste ? (naechste.x - p.x) / 16 : p.vx / 90;
+
+  oval(c, p.x, boden + 1.5, 15, 2.2, 'rgba(0, 0, 0, 0.28)');
+  if (p.unverwundbar > 0 && !tot && p.platt <= 0 && Math.floor(malZeit * 14) % 2) return;
+
+  let sx = 1, sy = 1, hopser = 0;
+  if (s.kraft && s.kraft.mini > 0) { sx = 0.62; sy = 0.62; }
+  if (p.platt > 0) {
+    const a = begrenzt(p.platt / 0.55, 0, 1);
+    sx *= 1 + a * 0.4;
+    sy *= 1 - a * 0.62;
+  }
+  if (feier) hopser = Math.abs(Math.sin(malZeit * 8)) * 8;
+
+  c.save();
+  if (tot) {
+    // Auf dem Rücken, die Beine zappeln
+    c.translate(p.x, boden - 15);
+    c.scale(sx, -Math.abs(sy));
+    c.translate(-22, -21);
+  } else {
+    c.translate(p.x, boden + 1 - hopser);
+    c.scale(sx, sy);
+    c.translate(-22, -36);
+  }
+  malKrabbe(c, {
+    figur: daten.figur, lauf: tot ? malZeit * 3 : p.lauf, wedel: p.wedel || malZeit, blick,
+    blickHoch: !!naechste, schereAuf: angst || feier || tot, schereHoch: angst && !tot, tanzt: feier || Math.abs(p.vx) < 5,
+    mund: tot ? 'tot' : p.platt > 0 ? 'oh' : feier ? 'jubel' : angst ? 'oh' : 'lachen', eimer: s.kraft && s.kraft.eimer
+  });
+  c.restore();
+
+  // Glibber an den Beinen, Schweiß bei Angst
+  if (p.glibber > 0) {
+    oval(c, p.x - 10, boden - 1, 2, 1.5, '#ffe08a');
+    oval(c, p.x + 9, boden - 1, 2, 1.2, '#ffe08a');
+    oval(c, p.x, boden - 1, 2.4, 1.2, '#ffe08a');
+  }
+  if (angst && !tot) {
+    const w = (malZeit * 3) % 1;
+    oval(c, p.x - 11 - w * 3, boden - 30 + w * 8, 1, 1.5, 'rgba(143, 227, 242, ' + (1 - w).toFixed(2) + ')');
+    oval(c, p.x + 11 + w * 3, boden - 27 + w * 8, 1, 1.5, 'rgba(143, 227, 242, ' + (1 - w).toFixed(2) + ')');
+  }
+  if (tot) {
+    for (let i = 0; i < 3; i++) {
+      const w = malZeit * 4 + i * 2.1;
+      oval(c, p.x + Math.cos(w) * 12, boden - 26 + Math.sin(w) * 3, 1.2, 1.2, '#ffe08a');
+    }
+  }
+}
+
+// --------------------------- Die Bosse ---------------------------
+
+function malBoss(c, art, x, y, zeit) {
+  if (art === 'gisela') malGisela(c, x, y, zeit);
+  else if (art === 'helga') malHelga(c, x, y, zeit);
+  else if (art === 'olaf') malOlaf(c, x, y, zeit);
+  else if (art === 'inge') malInge(c, x, y, zeit);
+  else malBlorp(c, x, y, zeit);
+}
+
+const KONTUR = '#1a1820';
+
+function malGisela(c, x, y, zeit) {
+  const fluegel = Math.sin(zeit * 9) * 0.45;
+  for (const seite of [-1, 1]) {
+    c.save();
+    c.translate(x + seite * 13, y - 2);
+    c.rotate(seite * fluegel);
+    c.beginPath();
+    c.moveTo(0, -6);
+    c.quadraticCurveTo(seite * 16, -11, seite * 32, -3);
+    c.quadraticCurveTo(seite * 22, 3, seite * 16, 3);
+    c.quadraticCurveTo(seite * 8, 6, 0, 6);
+    c.closePath();
+    c.fillStyle = '#ffffff';
+    c.fill();
+    c.strokeStyle = KONTUR;
+    c.lineWidth = 1;
+    c.stroke();
+    c.beginPath();
+    c.moveTo(seite * 22, -6.2);
+    c.quadraticCurveTo(seite * 28, -6, seite * 32, -3);
+    c.quadraticCurveTo(seite * 26, 1, seite * 22, 2);
+    c.closePath();
+    c.fillStyle = '#5e6472';
+    c.fill();
+    c.restore();
+  }
+  oval(c, x - 5, y + 14.5, 3, 1.6, '#f2925b', KONTUR);
+  oval(c, x + 5, y + 14.5, 3, 1.6, '#f2925b', KONTUR);
+  oval(c, x, y, 16, 14.5, '#ffffff', KONTUR, 1);
+  oval(c, x, y + 8, 11, 5.5, '#dfe4ec');
+  // Böse Augen
+  for (const seite of [-1, 1]) {
+    oval(c, x + seite * 6, y - 3, 3.8, 3.8, '#ffe08a', KONTUR, 0.8);
+    oval(c, x + seite * 5, y - 2.4, 1.6, 1.6, KONTUR);
+    strich(c, KONTUR, 2, x + seite * 11, y - 8.5, x + seite * 2.5, y - 5);
+  }
+  // Schnabel
+  flaeche(c, '#f2b84b', KONTUR, x - 6, y + 1, x + 6, y + 1, x, y + 11);
+  flaeche(c, '#e8503a', null, x - 1, y + 7, x + 3, y + 5.5, x, y + 10.4);
+}
+
+function malHelga(c, x, y, zeit) {
+  const quetsch = Math.sin(zeit * 4) * 1;
+  // Körper und Schwimmring
+  oval(c, x, y + 7, 23, 12, '#ffd34a', KONTUR, 1);
+  oval(c, x - 7, y + 2, 7, 2.5, '#ffe99a');
+  for (let i = 0; i < 8; i++) {
+    const a = i / 8;
+    c.beginPath();
+    c.ellipse(x, y + 10, 23, 6.5, 0, Math.PI * a, Math.PI * (a + 1 / 8));
+    c.strokeStyle = i % 2 ? '#ffffff' : '#e8503a';
+    c.lineWidth = 4.5;
+    c.lineCap = 'butt';
+    c.stroke();
+  }
+  // Kopf
+  const ky = y - 10 + quetsch;
+  oval(c, x, ky, 14, 12, '#ffd34a', KONTUR, 1);
+  oval(c, x - 5, ky - 7, 4.5, 2, '#ffe99a');
+  for (const seite of [-1, 1]) {
+    oval(c, x + seite * 5, ky - 3, 3.8, 3.8, '#ffffff', KONTUR, 0.8);
+    oval(c, x + seite * 4.4, ky - 2.4, 1.7, 1.7, KONTUR);
+    strich(c, KONTUR, 1.3, x + seite * 9, ky - 7.5, x + seite * 2, ky - 6);
+  }
+  // Schnabel und Trillerpfeife
+  oval(c, x, ky + 6, 8.5, 3.6, '#f2925b', KONTUR, 0.9);
+  strich(c, '#d8862c', 0.8, x - 6.5, ky + 6, x + 6.5, ky + 6);
+  eckig(c, x + 7, ky + 4.5, 7, 3.2, 1, '#a8aebb', KONTUR, 0.7);
+}
+
+function malOlaf(c, x, y, zeit) {
+  const wab = i => Math.sin(zeit * 2 + i) * 1.2;
+  const puffs = [[-23, 2, 11], [-12, -5, 14], [3, -7, 15], [16, -3, 13], [25, 3, 10], [-14, 7, 12], [1, 8, 14], [15, 7, 12]];
+  puffs.forEach(([px, py, r], i) => oval(c, x + px, y + py + wab(i), r, r * 0.92, null, KONTUR, 1.8));
+  puffs.forEach(([px, py, r], i) => oval(c, x + px, y + py + wab(i), r, r * 0.92, '#46507a'));
+  oval(c, x - 12, y - 11, 7, 2.2, '#6a769e');
+  oval(c, x + 6, y - 15, 7, 2, '#6a769e');
+  oval(c, x + 18, y - 8, 5, 1.6, '#6a769e');
+  // Gesicht
+  for (const seite of [-1, 1]) {
+    oval(c, x + seite * 8, y - 1, 5, 4, '#ffffff', KONTUR, 0.7);
+    oval(c, x + seite * 6.6, y - 0.4, 1.8, 2, KONTUR);
+    strich(c, KONTUR, 2, x + seite * 14, y - 7, x + seite * 3, y - 3.6);
+  }
+  eckig(c, x - 8, y + 6, 16, 6.5, 2.2, KONTUR);
+  for (let i = 0; i < 4; i++) balken(c, '#ffffff', [x - 6.6 + i * 3.6, y + 6, 2.2, 2]);
+  // Kleine Blitze hängen unten heraus
+  if (Math.floor(zeit * 5) % 2) {
+    strich(c, '#ffe08a', 1.4, x - 22, y + 13, x - 25, y + 19, x - 21, y + 19, x - 24, y + 26);
+    strich(c, '#ffe08a', 1.4, x + 20, y + 14, x + 17, y + 20, x + 21, y + 20, x + 18, y + 27);
+  }
+}
+
+function malInge(c, x, y, zeit) {
+  // Arme
+  for (let i = 0; i < 8; i++) {
+    const wx = x - 22 + i * 6.3;
+    const spitze = wx + (i - 3.5) * 2 + Math.sin(zeit * 2.4 + i) * 5;
+    const mitte = wx + Math.sin(zeit * 2.4 + i + 1.2) * 5;
+    bogen(c, KONTUR, 7, wx, y + 8, mitte, y + 22, spitze, y + 34);
+    bogen(c, '#a050c0', 5, wx, y + 8, mitte, y + 22, spitze, y + 34);
+    oval(c, (wx + mitte * 2 + spitze) / 4, y + 24, 1.1, 1.1, '#e0a8f0');
+  }
+  // Kopf
+  oval(c, x, y - 3, 21, 19, '#a050c0', KONTUR, 1.1);
+  oval(c, x - 7, y - 15, 8, 3, '#c98ae8');
+  oval(c, x, y + 11, 14, 4, 'rgba(90, 30, 120, 0.45)');
+  // Augen mit Wimpern
+  const blick = Math.sin(zeit * 1.3) * 1.6;
+  for (const seite of [-1, 1]) {
+    oval(c, x + seite * 8.5, y - 3, 5.8, 5.6, '#ffffff', KONTUR, 0.9);
+    oval(c, x + seite * 8.5 + blick, y - 2.4, 2.4, 2.6, KONTUR);
+    strich(c, KONTUR, 1.5, x + seite * 3, y - 9, x + seite * 14.5, y - 9.5);
+    strich(c, KONTUR, 1, x + seite * 12, y - 9.5, x + seite * 14, y - 12);
+    strich(c, KONTUR, 1, x + seite * 8, y - 9.5, x + seite * 8.5, y - 12.5);
+  }
+  // Lippenstift
+  oval(c, x, y + 8, 6.5, 3.2, '#ff5a8a', KONTUR, 0.9);
+  strich(c, KONTUR, 0.8, x - 4, y + 8, x + 4, y + 8);
+}
+
+function malBlorp(c, x, y, zeit) {
+  // Außerirdischer mit Mütze
+  oval(c, x, y - 11, 8, 9, '#7dffb0', KONTUR, 0.8);
+  oval(c, x - 3.2, y - 11, 2.8, 3.4, KONTUR);
+  oval(c, x + 3.2, y - 11, 2.8, 3.4, KONTUR);
+  oval(c, x - 3.8, y - 12, 0.9, 0.9, '#ffffff');
+  oval(c, x + 2.6, y - 12, 0.9, 0.9, '#ffffff');
+  strich(c, KONTUR, 0.8, x - 2, y - 5.6, x + 2, y - 5.6);
+  eckig(c, x - 6.5, y - 22, 13, 4.4, 1.6, '#ffffff', KONTUR);
+  balken(c, '#24508f', [x - 6, y - 18.8, 12, 1.2]);
+  oval(c, x, y - 20, 1, 1, '#f2b84b');
+  // Glaskuppel
+  c.beginPath();
+  c.arc(x, y - 3, 16, Math.PI, 0);
+  c.closePath();
+  c.fillStyle = 'rgba(191, 234, 245, 0.28)';
+  c.fill();
+  c.strokeStyle = '#d6f4fb';
+  c.lineWidth = 1;
+  c.stroke();
+  bogen(c, '#ffffff', 0.9, x - 11, y - 9, x - 9, y - 14, x - 5, y - 16);
+  // Scheibe
+  const v = c.createLinearGradient(0, y - 6, 0, y + 10);
+  v.addColorStop(0, '#e2e6ee');
+  v.addColorStop(1, '#6a7082');
+  oval(c, x, y + 2, 31, 8.5, v, KONTUR, 1);
+  for (let i = 0; i < 6; i++) {
+    const an = Math.floor(zeit * 7 + i) % 3 === 0;
+    oval(c, x - 22.5 + i * 9, y + 3.4, 2.8, 1.8, an ? '#ffe08a' : '#e8503a', KONTUR, 0.5);
+  }
+}
+
+// --------------------------- Die fünf Welten ---------------------------
+// Der Hintergrund bleibt absichtlich blass und ruhig, damit man den Krempel sofort sieht.
+
+function malHafenBild(c) {
+  const horizont = Math.round(H * 0.6), boden = bodenY();
+  verlauf(c, 0, horizont, ['#6fb6e8', '#a8d8ee', '#ffe8c4', '#ffcf96']);
+  oval(c, 134, horizont - 24, 21, 21, 'rgba(255, 240, 192, 0.6)');
+  oval(c, 134, horizont - 24, 15, 15, '#ffdc84');
+  // Ferne Stadt mit Kränen
+  const fern = '#9aa4c4';
+  balken(c, fern, [0, horizont - 12, B, 12], [8, horizont - 22, 16, 10], [30, horizont - 16, 22, 6], [104, horizont - 20, 18, 8], [152, horizont - 26, 12, 14]);
+  balken(c, '#8a94b8', [62, horizont - 44, 2.4, 44], [50, horizont - 44, 34, 2], [90, horizont - 34, 2, 34], [84, horizont - 34, 24, 1.6]);
+  strich(c, '#8a94b8', 0.7, 80, horizont - 43, 80, horizont - 28);
+  // Leuchtturm wie im Hafen von Pixelhafen
+  flaeche(c, '#ffffff', null, 19, horizont - 50, 26, horizont - 50, 28, horizont - 10, 17, horizont - 10);
+  flaeche(c, '#f08a78', null, 18.6, horizont - 40, 26.4, horizont - 40, 26.8, horizont - 32, 18.2, horizont - 32);
+  flaeche(c, '#f08a78', null, 18, horizont - 24, 27, horizont - 24, 27.4, horizont - 16, 17.6, horizont - 16);
+  eckig(c, 18.5, horizont - 60, 8, 8, 1.5, '#ffe9a8', '#6a7088');
+  balken(c, '#6a7088', [16.5, horizont - 52, 12, 1.6]);
+  // Wasser
+  verlauf(c, horizont, boden, ['#7cc8de', '#5aaecc', '#4296b8']);
+  schleier(c, 0, boden, 'rgba(255, 255, 255, 0.14)');
+  // Kai aus Holzplanken
+  verlauf(c, boden, boden + 16, ['#a06c42', '#7a4f2c']);
+  balken(c, '#d0a06c', [0, boden, B, 1.6]);
+  balken(c, '#6e4526', [0, boden + 7.5, B, 0.7]);
+  for (let x = 6; x < B; x += 29) balken(c, '#5c3a22', [x, boden + 1.6, 0.7, 6], [x + 14, boden + 8.2, 0.7, 7.8]);
+  verlauf(c, boden + 16, H, ['#5c3a22', '#3f2a18']);
+  for (let x = 12; x < B; x += 38) balken(c, '#34230f', [x, boden + 16, 7, 12]);
+}
+
+function malHafenLeben(c, zeit) {
+  const horizont = Math.round(H * 0.6), boden = bodenY();
+  wolke(c, ((zeit * 5) % 230) - 25, 36, '#ffffff', 1);
+  wolke(c, ((zeit * 3 + 120) % 240) - 30, 64, '#ffffff', 0.7);
+  for (let i = 0; i < 8; i++) {
+    const x = (i * 37 + zeit * (2 + i % 3)) % B;
+    const y = horizont + 5 + (i * 13) % (boden - horizont - 7);
+    if (Math.sin(zeit * 2 + i * 2) > -0.2) strich(c, '#c4eef6', 0.7, x, y, x + 4 + i % 4, y);
+  }
+}
+
+function malStrandBild(c) {
+  const horizont = Math.round(H * 0.52), wasser = Math.round(H * 0.68), boden = bodenY();
+  verlauf(c, 0, horizont, ['#5ab8ec', '#94dcf2', '#dcf6f0']);
+  oval(c, 146, 44, 24, 24, 'rgba(255, 244, 192, 0.55)');
+  oval(c, 146, 44, 17, 17, '#ffe690');
+  verlauf(c, horizont, wasser, ['#8ce8de', '#58d0d0', '#40b8c8']);
+  verlauf(c, wasser, boden, ['#fff2c8', '#f4e0a8']);
+  // Strandhütten
+  for (const [x, farbe] of [[108, '#f09484'], [128, '#88aee0'], [148, '#f6b48c']]) {
+    balken(c, '#ffffff', [x, wasser - 8, 16, 15]);
+    for (let i = 0; i < 4; i++) balken(c, farbe, [x + i * 4, wasser - 8, 2, 15]);
+    flaeche(c, farbe, null, x - 2, wasser - 8, x + 18, wasser - 8, x + 8, wasser - 15);
+  }
+  // Palme
+  bogen(c, '#a07a56', 4, 32, wasser + 4, 30, wasser - 18, 38, wasser - 36);
+  const blatt = (dx, dy) => {
+    c.beginPath();
+    c.moveTo(38, wasser - 36);
+    c.quadraticCurveTo(38 + dx * 0.5, wasser - 36 + dy - 8, 38 + dx, wasser - 36 + dy);
+    c.quadraticCurveTo(38 + dx * 0.5, wasser - 36 + dy - 2, 38, wasser - 36);
+    c.fillStyle = '#6cae66';
+    c.fill();
+  };
+  for (const [dx, dy] of [[-26, 8], [-20, -2], [-8, -10], [10, -10], [22, -2], [28, 8]]) blatt(dx, dy);
+  schleier(c, 0, boden, 'rgba(255, 255, 255, 0.12)');
+  // Boden: Sand
+  verlauf(c, boden, H, ['#e8c882', '#c4985a']);
+  balken(c, '#f6e2ae', [0, boden, B, 1.6]);
+  for (let i = 0; i < 26; i++) oval(c, (i * 53) % B, boden + 5 + (i * 17) % 21, 1.2, 0.5, i % 3 ? '#b08a50' : '#f0d8a0');
+}
+
+function malStrandLeben(c, zeit) {
+  const horizont = Math.round(H * 0.52), wasser = Math.round(H * 0.68);
+  wolke(c, ((zeit * 4 + 40) % 230) - 25, 30, '#ffffff', 0.9);
+  wolke(c, ((zeit * 2.5 + 150) % 240) - 30, 60, '#ffffff', 0.6);
+  for (let i = 0; i < 9; i++) {
+    const x = i * 24 + Math.sin(zeit * 1.3 + i) * 6;
+    const y = wasser - 1 + Math.sin(zeit * 1.8 + i * 0.8) * 1.2;
+    strich(c, '#ffffff', 1.4, x, y, x + 14, y);
+  }
+  for (let i = 0; i < 4; i++) {
+    if (Math.sin(zeit * 2 + i * 3) > 0) {
+      const x = (i * 41 + zeit * 3) % B;
+      strich(c, '#d4fff6', 0.7, x, horizont + 4 + i * 5, x + 6, horizont + 4 + i * 5);
+    }
+  }
+}
+
+function malSturmBild(c) {
+  const horizont = Math.round(H * 0.6), boden = bodenY();
+  verlauf(c, 0, horizont, ['#141a2e', '#222a48', '#34406a']);
+  // Felsen mit Leuchtturm
+  flaeche(c, '#10142a', null, 118, horizont + 4, 134, horizont - 16, 146, horizont - 26, 164, horizont - 24, 182, horizont - 12, 182, horizont + 4);
+  flaeche(c, '#8a92a8', null, 148, horizont - 70, 156, horizont - 70, 158, horizont - 24, 146, horizont - 24);
+  flaeche(c, '#6e3040', null, 147.6, horizont - 58, 156.4, horizont - 58, 156.8, horizont - 49, 147.2, horizont - 49);
+  eckig(c, 148, horizont - 79, 8, 8, 1.5, '#ffe08a', '#10142a');
+  balken(c, '#10142a', [145.5, horizont - 71, 13, 1.6]);
+  verlauf(c, horizont, boden, ['#26344e', '#182438', '#101a2c']);
+  // Nasser Felsboden
+  verlauf(c, boden, H, ['#464c68', '#1c2032']);
+  balken(c, '#838ca8', [0, boden, B, 1.6]);
+  for (let i = 0; i < 12; i++) oval(c, (i * 37) % B, boden + 7 + (i * 11) % 18, 5 + (i % 4) * 2, 1, i % 2 ? '#2a2e44' : '#555c7c');
+}
+
+function malSturmLeben(c, zeit) {
+  const horizont = Math.round(H * 0.6), boden = bodenY();
+  // Lichtkegel des Leuchtturms
+  const kegel = Math.sin(zeit * 0.9);
+  c.fillStyle = 'rgba(255, 224, 138, 0.09)';
+  c.beginPath();
+  c.moveTo(152, horizont - 75);
+  c.lineTo(kegel > 0 ? -10 : 200, horizont - 95 + Math.abs(kegel) * 40);
+  c.lineTo(kegel > 0 ? -10 : 200, horizont - 60 + Math.abs(kegel) * 55);
+  c.closePath();
+  c.fill();
+  // Dicke Wolken oben
+  for (let i = 0; i < 5; i++) {
+    wolke(c, ((i * 48 + zeit * (6 + i % 3)) % 230) - 25, 12 + (i % 3) * 7, i % 2 ? '#2e3656' : '#262e4c', 1.3);
+  }
+  for (let i = 0; i < 8; i++) {
+    const x = (i * 27 + zeit * 11) % (B + 20) - 10;
+    const y = horizont + 4 + (i % 5) * 7 + Math.sin(zeit * 2 + i) * 2;
+    if (y < boden - 2) strich(c, '#4a6890', 0.8, x, y, x + 9, y);
+  }
+  // Regen, schräg nach dem Wind
+  const schraeg = (s && s.wind ? s.wind : 18) * 0.11;
+  c.strokeStyle = 'rgba(170, 200, 240, 0.34)';
+  c.lineWidth = 0.6;
+  c.beginPath();
+  for (let i = 0; i < 26; i++) {
+    const x = ((i * 47 + zeit * (schraeg * 40)) % (B + 20) + B + 20) % (B + 20) - 10;
+    const y = (i * 71 + zeit * 260) % (boden + 10);
+    c.moveTo(x, y);
+    c.lineTo(x + schraeg, y + 7);
+  }
+  c.stroke();
+}
+
+function malMeerBild(c) {
+  const boden = bodenY();
+  verlauf(c, 0, boden, ['#2a9ac8', '#1878ac', '#10568e', '#0c3e72']);
+  // Ferne Felsen und ein Schiffswrack
+  const fern = '#1a4e84';
+  flaeche(c, fern, null, 0, boden, 0, boden - 46, 16, boden - 40, 28, boden - 22, 46, boden);
+  flaeche(c, fern, null, 180, boden, 180, boden - 56, 150, boden - 48, 136, boden - 24, 120, boden);
+  flaeche(c, '#1c5690', null, 58, boden - 30, 118, boden - 30, 106, boden, 68, boden);
+  balken(c, '#1c5690', [76, boden - 48, 2.4, 18], [92, boden - 60, 3, 30], [86, boden - 54, 16, 1.6]);
+  // Boden
+  verlauf(c, boden, H, ['#d0bc88', '#80724c']);
+  balken(c, '#e6d4a4', [0, boden, B, 1.6]);
+  for (let i = 0; i < 22; i++) oval(c, (i * 43) % B, boden + 6 + (i * 19) % 20, 1.4, 0.5, i % 2 ? '#8a7a50' : '#c8b47c');
+}
+
+function malMeerLeben(c, zeit) {
+  const boden = bodenY();
+  // Lichtstrahlen von oben
+  c.fillStyle = 'rgba(190, 240, 255, 0.05)';
+  for (let i = 0; i < 4; i++) {
+    const x = 18 + i * 44 + Math.sin(zeit * 0.4 + i) * 10;
+    c.beginPath();
+    c.moveTo(x, 0);
+    c.lineTo(x + 18, 0);
+    c.lineTo(x + 2, boden);
+    c.lineTo(x - 26, boden);
+    c.closePath();
+    c.fill();
+  }
+  // Seegras
+  for (const [wx, hoch, farbe] of [[42, 24, '#2a8c6a'], [47, 34, '#1f7056'], [130, 28, '#2a8c6a'], [166, 34, '#1f7056']]) {
+    const sp = Math.sin(zeit * 1.5 + wx) * hoch * 0.25;
+    bogen(c, farbe, 1.6, wx, boden, wx - sp, boden - hoch * 0.55, wx + sp, boden - hoch);
+  }
+  // Blasen
+  for (let i = 0; i < 7; i++) {
+    const y = boden - ((zeit * (14 + i * 2) + i * 61) % boden);
+    const x = (i * 31 + Math.sin(zeit * 2 + i) * 4) % B;
+    oval(c, x, y, 0.7 + (i % 3) * 0.4, 0.7 + (i % 3) * 0.4, null, 'rgba(200, 245, 255, 0.4)', 0.4);
+  }
+}
+
+function malAllBild(c) {
+  const boden = bodenY();
+  verlauf(c, 0, boden, ['#0a0c20', '#141438', '#2a2058', '#3c2a70']);
+  const r = wuerfel(99);
+  for (let i = 0; i < 90; i++) {
+    oval(c, r() * B, r() * (boden - 10), 0.4, 0.4, r() < 0.3 ? '#d0d4e0' : '#6a7088');
+  }
+  // Ringplanet und Erde
+  const pl = c.createLinearGradient(20, 58, 60, 92);
+  pl.addColorStop(0, '#d8a070');
+  pl.addColorStop(1, '#7a4c30');
+  oval(c, 40, 74, 18, 18, pl);
+  c.save();
+  c.translate(40, 74);
+  c.rotate(-0.25);
+  oval(c, 0, 0, 31, 5, null, 'rgba(255, 224, 138, 0.55)', 1.5);
+  c.restore();
+  const er = c.createRadialGradient(137, 131, 2, 142, 136, 13);
+  er.addColorStop(0, '#5a90d8');
+  er.addColorStop(1, '#264e90');
+  oval(c, 142, 136, 12, 12, er);
+  oval(c, 138, 132, 4, 2.6, '#5c9e50');
+  oval(c, 145, 139, 3.6, 2.4, '#5c9e50');
+  // Ferne Basis
+  flaeche(c, '#241e44', null, 0, boden, 0, boden - 24, 40, boden - 24, 60, boden - 14, 120, boden - 14, 140, boden - 26, 180, boden - 26, 180, boden);
+  // Mondboden
+  verlauf(c, boden, H, ['#a0a0b2', '#4e4e62']);
+  balken(c, '#d0d0dc', [0, boden, B, 1.6]);
+  for (const [x, y, g] of [[28, 8, 7], [76, 15, 9], [124, 7, 5], [158, 17, 7]]) {
+    oval(c, x, boden + y, g, g * 0.32, '#5e5e72');
+    oval(c, x, boden + y + 0.5, g * 0.7, g * 0.2, '#46465a');
+  }
+}
+
+function malAllLeben(c, zeit) {
+  for (let i = 0; i < 9; i++) {
+    if (Math.sin(zeit * (1.5 + i * 0.3) + i) > 0.4) {
+      oval(c, (i * 43 + 11) % B, (i * 29 + 6) % (H * 0.6), 0.8, 0.8, '#ffffff');
+    }
+  }
+  const t = zeit % 7;
+  if (t < 0.7) {
+    const x = 170 - t * 220, y = 16 + t * 70;
+    strich(c, 'rgba(255, 255, 255, 0.6)', 0.7, x, y, x + 10, y - 3);
+  }
+}
+
+const WELT_BILD = [malHafenBild, malStrandBild, malSturmBild, malMeerBild, malAllBild];
+const WELT_LEBEN = [malHafenLeben, malStrandLeben, malSturmLeben, malMeerLeben, malAllLeben];
+let hintergrundCache = {};
+
+function hintergrund(nr) {
+  if (!hintergrundCache[nr]) {
+    const l = document.createElement('canvas');
+    l.width = bild.width;
+    l.height = bild.height;
+    const c = l.getContext('2d');
+    const e = bild.width / B;
+    c.setTransform(e, 0, 0, e, 0, 0);
+    WELT_BILD[nr](c);
+    hintergrundCache[nr] = l;
+  }
+  return hintergrundCache[nr];
+}
+
+// --------------------------- Alles zusammen zeichnen ---------------------------
+
+const bild = $('bild');
+const g = bild.getContext('2d');
+let massstab = 2, dichte = 1;
+
+function malDing(c, d) {
+  const b = DINGE[d.art];
+  const breite = b.b + SCHEIN_RAND * 2, hoehe = b.h + SCHEIN_RAND * 2;
+  if (d.drehV && !wenigBewegung.matches) {
+    c.save();
+    c.translate(d.x, d.y);
+    c.rotate(d.dreh);
+    c.drawImage(b.bild, -breite / 2, -hoehe / 2, breite, hoehe);
+    c.restore();
+  } else {
+    c.drawImage(b.bild, d.x - breite / 2, d.y - hoehe / 2, breite, hoehe);
+  }
+  if (d.typ === 'mine' && d.warte > 0 && Math.floor(d.warte * 10) % 2) oval(c, d.x, d.y, 2.8, 2.8, '#ff3f3f');
+}
+
+// Zeigt am Boden, wo etwas gleich landet
+function malLandepunkt(c, d) {
+  const boden = bodenY();
+  if (d.typ === 'hopf' || d.typ === 'mine' || d.typ === 'meteor') return;
+  const rest = boden - d.y;
+  if (rest > 120) return;
+  const nah = 1 - rest / 120;
+  const x = d.typ === 'splitter' ? d.x + (d.vx / (d.vy || 1)) * rest : d.x;
+  oval(c, x, boden + 1.2, d.w + 2 + nah * 2, 1.8, 'rgba(225, 20, 20, ' + (0.1 + nah * 0.5).toFixed(2) + ')');
+}
+
+// Alles, was gut ist, steckt in einem leuchtenden Kreis
+function malSammel(c, m) {
+  if (m.liegt > 0 && m.liegt < 0.8 && Math.floor(malZeit * 10) % 2) return;
+  const x = m.x, y = m.y;
+  const stern = m.art === 'stern';
+  const pochen = wenigBewegung.matches ? 1 : 1 + Math.sin(malZeit * 5 + m.x) * 0.07;
+  const r = (m.art === 'muschel' ? 6.6 : stern ? 9.6 : 9.2) * pochen;
+  // Muscheln leuchten weniger als Hilfen: Sie dürfen die Gefahren nicht übertönen
+  const muschel = m.art === 'muschel';
+  const hof = r * (muschel ? 1.6 : 2.1);
+  const altAlpha = c.globalAlpha;
+  c.globalAlpha = altAlpha * (muschel ? 0.5 : 0.85);
+  c.drawImage(stern ? HOF_STERN : HOF_GUT, x - hof, y - hof, hof * 2, hof * 2);
+  c.globalAlpha = altAlpha;
+  if (stern && !wenigBewegung.matches) {
+    for (let i = 0; i < 8; i++) {
+      const w = malZeit * 1.5 + (i * Math.PI) / 4;
+      const r0 = r + 1.5, r1 = r + (i % 2 ? 3.4 : 5);
+      strich(c, '#ffd65c', 0.9, x + Math.cos(w) * r0, y + Math.sin(w) * r0, x + Math.cos(w) * r1, y + Math.sin(w) * r1);
+    }
+  }
+  oval(c, x, y, r, r, stern ? '#fff8dc' : '#ffffff', stern ? FARBE_STERN : FARBE_GUT, 1.5);
+  if (m.art === 'muschel') c.drawImage(MUSCHEL_PIXEL, x - 4.5, y - 3.5, 9, 7);
+  else if (stern) c.drawImage(STERN_PIXEL, x - 6.5, y - 6.5, 13, 13);
+  else c.drawImage(HILFE_PIXEL[m.hilfe], x - 6, y - 5.4, 12, 10.7);
+}
+
+function malSaeule(c, a) {
+  const boden = bodenY();
+  const links = a.x - a.breite, breite = a.breite * 2;
+  if (a.t < a.warnen) {
+    // Warnung: Der Boden blinkt, je später, desto schneller
+    const schnell = a.t > a.warnen * 0.6 ? 14 : 7;
+    const farbe = a.art === 'blitz' ? '255, 210, 90' : '200, 138, 232';
+    const v = c.createLinearGradient(0, 0, 0, boden);
+    const stark = Math.floor(a.t * schnell) % 2 ? 0.42 : 0.16;
+    v.addColorStop(0, 'rgba(' + farbe + ', 0)');
+    v.addColorStop(1, 'rgba(' + farbe + ', ' + stark + ')');
+    c.fillStyle = v;
+    c.fillRect(links, 0, breite, boden);
+    eckig(c, links, boden - 1.5, breite, 3, 1.5, a.art === 'blitz' ? '#ffd24a' : '#e0a8f0');
+    return;
+  }
+  if (a.art === 'blitz') {
+    const punkte = [a.x, 0];
+    for (let y = 14; y < boden; y += 14) punkte.push(a.x + (((y * 7 + Math.floor(a.t * 50) * 13) % 17) - 8), y);
+    punkte.push(a.x, boden);
+    strich(c, 'rgba(255, 224, 138, 0.45)', 11, ...punkte);
+    strich(c, '#ffe08a', 4.5, ...punkte);
+    strich(c, '#ffffff', 1.8, ...punkte);
+  } else {
+    const fort = begrenzt((a.t - a.warnen) / 0.08, 0, 1);
+    const unten = boden * fort;
+    bogen(c, KONTUR, breite + 1.5, a.x, -4, a.x + 3, unten / 2, a.x, unten);
+    bogen(c, '#a050c0', breite, a.x, -4, a.x + 3, unten / 2, a.x, unten);
+    for (let y = 10; y < unten - 4; y += 18) {
+      oval(c, a.x - 2, y, 3.6, 3.6, '#e0a8f0');
+      oval(c, a.x - 2, y, 1.7, 1.7, '#a050c0');
+    }
+  }
+}
+
+function malStrahl(c, st) {
+  const boden = bodenY();
+  if (st.t < st.warnen) {
+    // Vorschau: Wo der Strahl langläuft
+    const links = Math.min(st.von, st.bis), rechts = Math.max(st.von, st.bis);
+    if (Math.floor(st.t * 10) % 2) eckig(c, links, boden - 1.5, rechts - links, 3, 1.5, '#ff5a5a');
+    c.fillStyle = 'rgba(255, 60, 60, 0.2)';
+    c.fillRect(st.von - 7, 0, 14, boden);
+    return;
+  }
+  c.fillStyle = 'rgba(255, 60, 60, 0.32)';
+  c.fillRect(st.x - 8, 0, 16, boden);
+  c.fillStyle = '#ff5a5a';
+  c.fillRect(st.x - 4, 0, 8, boden);
+  c.fillStyle = '#ffffff';
+  c.fillRect(st.x - 1.4, 0, 2.8, boden);
+}
+
+function malMoewe(c, m) {
+  const r = m.richtung;
+  const fl = Math.sin(m.t * 14) * 6;
+  strich(c, KONTUR, 3, m.x - 9, m.y - 3 - fl, m.x, m.y);
+  strich(c, KONTUR, 3, m.x + 9, m.y - 3 - fl, m.x, m.y);
+  strich(c, '#ffffff', 1.6, m.x - 9, m.y - 3 - fl, m.x, m.y);
+  strich(c, '#ffffff', 1.6, m.x + 9, m.y - 3 - fl, m.x, m.y);
+  oval(c, m.x, m.y + 0.5, 7, 3.4, '#ffffff', KONTUR, 0.8);
+  oval(c, m.x + r * 6, m.y - 2, 3, 3, '#ffffff', KONTUR, 0.8);
+  oval(c, m.x + r * 6.6, m.y - 2.6, 0.7, 0.7, KONTUR);
+  flaeche(c, '#f2b84b', KONTUR, m.x + r * 8.5, m.y - 3, m.x + r * 8.5, m.y - 0.6, m.x + r * 12, m.y - 1.6);
+}
+
+function malPfuetze(c, f) {
+  const boden = bodenY();
+  c.globalAlpha = f.zeit < 1 ? 0.5 : 1;
+  oval(c, f.x, boden + 0.5, f.b, 2.4, '#ffe08a', '#c89a28', 0.7);
+  oval(c, f.x - 3, boden, 2, 0.6, '#ffffff');
+  c.globalAlpha = 1;
+}
+
+function malHelfer(c) {
+  // Fortschrittsbalken ganz oben
+  const anteil = begrenzt(s.uhr / s.gr.zeit, 0, 1);
+  c.fillStyle = 'rgba(20, 21, 26, 0.85)';
+  c.fillRect(0, 0, B, 3.4);
+  c.fillStyle = s.boss ? '#e8503a' : '#f2b84b';
+  c.fillRect(0, 0, B * anteil, 3);
+  // Herzen auf dunklem Grund, damit man sie immer sieht
+  const anzahl = Math.max(s.stufe.herzen, s.herzen);
+  eckig(c, 1.5, 5.5, anzahl * 9 + 3, 10.5, 3, 'rgba(20, 21, 26, 0.5)');
+  for (let i = 0; i < anzahl; i++) c.drawImage(i < s.herzen ? HERZ_PIXEL : HERZ_LEER_PIXEL, 3.5 + i * 9, 7, 8, 8);
+  // Laufende Hilfen
+  let hx = 3;
+  for (const name of ['eimer', 'flossen', 'schnecke', 'magnet', 'mini']) {
+    const aktiv = name === 'eimer' ? s.kraft.eimer : s.kraft[name] > 0;
+    if (!aktiv) continue;
+    oval(c, hx + 5.5, 23.5, 6.2, 6.2, '#ffffff', FARBE_GUT, 1);
+    c.drawImage(HILFE_PIXEL[name], hx + 1.5, 20, 8, 7.1);
+    if (name !== 'eimer') {
+      c.fillStyle = 'rgba(20, 21, 26, 0.7)';
+      c.fillRect(hx, 31, 11, 1.6);
+      c.fillStyle = FARBE_GUT;
+      c.fillRect(hx, 31, 11 * (s.kraft[name] / HILFEN[name].dauer), 1.6);
+    }
+    hx += 14;
+  }
+  // Wind-Anzeige
+  if (Math.abs(s.windZiel) > 2) {
+    const r = Math.sign(s.windZiel);
+    const x = B - 16, y = 26 + Math.sin(malZeit * 6);
+    strich(c, '#ffffff', 1.2, x - r * 8, y, x + r * 8, y, x + r * 4, y - 3);
+    strich(c, '#ffffff', 1.2, x + r * 8, y, x + r * 4, y + 3);
+  }
+}
+
+// Text mit dunklem Rand
+function textMitte(text, x, y, groesse, farbe, alpha = 1) {
+  g.globalAlpha = alpha;
+  g.font = groesse + 'px "Press Start 2P", monospace';
+  g.textAlign = 'center';
+  g.textBaseline = 'middle';
+  g.fillStyle = '#14151a';
+  const d = groesse * 0.14;
+  for (const [dx, dy] of [[-d, 0], [d, 0], [0, -d], [0, d], [d, d]]) g.fillText(text, x + dx, y + dy);
+  g.fillStyle = farbe;
+  g.fillText(text, x, y);
+  g.globalAlpha = 1;
+}
+
+function sprechblase(text, x, y, groesse = 4.5, farbe = '#14151a') {
+  const breite = text.length * groesse + 7;
+  const hoehe = groesse + 7;
+  const bx = begrenzt(x - breite / 2, 2, B - breite - 2);
+  const zx = begrenzt(x, bx + 5, bx + breite - 5);
+  flaeche(g, '#ffffff', '#14151a', zx - 3, y - 0.5, zx + 3, y - 0.5, zx, y + 4);
+  eckig(g, bx, y - hoehe, breite, hoehe, 3, '#ffffff', '#14151a', 0.9);
+  balken(g, '#ffffff', [zx - 2.4, y - 1.4, 4.8, 1.6]);
+  g.font = groesse + 'px "Press Start 2P", monospace';
+  g.textAlign = 'left';
+  g.textBaseline = 'middle';
+  g.fillStyle = farbe;
+  g.fillText(text, bx + 3.5, y - hoehe / 2 + 0.3);
+}
+
+// Bricht langen Text um, damit er auf jedes Handy passt
+function zeilenUmbruch(text, zeichen) {
+  const zeilen = [];
+  let zeile = '';
+  for (const wort of text.split(' ')) {
+    if ((zeile + ' ' + wort).trim().length > zeichen) { zeilen.push(zeile); zeile = wort; }
+    else zeile = (zeile + ' ' + wort).trim();
+  }
+  if (zeile) zeilen.push(zeile);
+  return zeilen;
+}
+
+// Die Grundregel, groß in der Ansage von Level 1
+function malRegelTafel(y, alpha) {
+  g.globalAlpha = alpha;
+  eckig(g, 14, y, B - 28, 46, 4, 'rgba(20, 21, 26, 0.82)');
+  malSammel(g, { art: 'muschel', x: 34, y: y + 13, liegt: 0 });
+  malSammel(g, { art: 'hilfe', hilfe: 'eimer', x: 52, y: y + 13, liegt: 0 });
+  g.drawImage(DINGE.kiste.bild, 22, y + 24, 20, 20);
+  g.drawImage(DINGE.stiefel.bild, 42, y + 24, 19, 19);
+  g.globalAlpha = 1;
+  textMitte('EINSAMMELN!', 113, y + 13, 5.5, '#5cf0a0', alpha);
+  textMitte('AUSWEICHEN!', 113, y + 34, 5.5, '#ff7a7a', alpha);
+}
+
+function zeichne() {
+  if (!s || !s.gr) return;
+  const c = g;
+  const zeit = malZeit;
+  const boden = bodenY();
+  const sk = massstab * dichte;
+  c.imageSmoothingEnabled = true;
+  c.imageSmoothingQuality = 'high';
+  c.setTransform(sk, 0, 0, sk, 0, 0);
+  if (s.schuettel > 0) c.translate((Math.random() - 0.5) * 5, (Math.random() - 0.5) * 4);
+
+  c.drawImage(hintergrund(s.gr.wNr), 0, 0, B, H);
+  WELT_LEBEN[s.gr.wNr](c, zeit);
+  for (const f of s.pfuetzen) malPfuetze(c, f);
+  for (const st of s.strahlen) malStrahl(c, st);
+  for (const d of s.dinge) malLandepunkt(c, d);
+  for (const m of s.moewen) malMoewe(c, m);
+
+  // Boss schwebt oben und bleibt beim Feiern noch kurz im Bild
+  if (s.boss) {
+    let y = 34 + Math.sin(zeit * 1.8) * 3;
+    if (s.uhr < 0) y = -30 + ((s.uhr + s.vorlauf) / s.vorlauf) * 64;
+    if (s.abschluss && s.abschluss.art === 'feier') y -= (2.1 - s.abschluss.zeit) * 50;
+    s.boss.anzeigeY = y;
+    malBoss(c, s.boss.art, bossX(s.boss.zeit), y, zeit);
+  }
+
+  zeichneKalle(c);
+  for (const a of s.saeulen) malSaeule(c, a);
+  for (const d of s.dinge) malDing(c, d);
+  for (const m of s.sammel) malSammel(c, m);
+
+  for (const w of s.warnungen) {
+    if (Math.floor(w.zeit * 12) % 2) {
+      flaeche(c, '#ffd34a', KONTUR, w.x - 7, 6, w.x + 7, 6, w.x, 18);
+      strich(c, KONTUR, 1.4, w.x, 8.6, w.x, 12);
+      oval(c, w.x, 14.6, 0.8, 0.8, KONTUR);
+    }
+  }
+  for (const f of s.funken) {
+    const g2 = f.zeit > 0.2 ? 1.2 : 0.7;
+    oval(c, f.x, f.y, g2, g2, f.farbe);
+  }
+
+  // Licht aus: Nur um Kalle ist es hell. Gefahren leuchten rot, Gutes leuchtet grün.
+  if (s.gr.dunkel) {
+    const mx = s.p.x, my = boden - 14;
+    const v = c.createRadialGradient(mx, my, 44, mx, my, 96);
+    v.addColorStop(0, 'rgba(2, 6, 18, 0)');
+    v.addColorStop(1, 'rgba(2, 6, 18, 0.95)');
+    c.fillStyle = v;
+    c.fillRect(-4, -4, B + 8, H + 8);
+    for (const dd of s.dinge) oval(c, dd.x, dd.y, 2.2, 2.2, '#ff5a4a', '#ffffff', 0.4);
+    for (const m of s.sammel) oval(c, m.x, m.y, 2.2, 2.2, '#5cf0a0', '#ffffff', 0.4);
+  }
+
+  c.setTransform(sk, 0, 0, sk, 0, 0);
+  malHelfer(c);
+
+  if (s.hell > 0) {
+    c.fillStyle = 'rgba(235, 240, 255, ' + Math.min(0.6, s.hell) + ')';
+    c.fillRect(0, 0, B, H);
+  }
+
+  for (const t of s.texte) textMitte(t.text, begrenzt(t.x, t.text.length * 2.5 + 2, B - t.text.length * 2.5 - 2), t.y, 5, t.farbe, Math.min(1, t.zeit * 2));
+
+  // Punkte-Faktor: Jedes knappe Ausweichen füllt einen Punkt, bei fünf steigt der Faktor
+  const faktor = faktorKette();
+  if (faktor > 1 || s.kette > 0) {
+    textMitte('x' + faktor, B - 11, 12, 7, faktor > 1 ? '#ffe08a' : '#ffffff');
+    const voll = faktor >= 5 ? 5 : s.kette % 5;
+    for (let i = 0; i < 5; i++) oval(g, B - 20 + i * 4, 19, 1.5, 1.5, i < voll ? '#ffe08a' : '#5e6472', '#14151a', 0.5);
+  }
+
+  if (s.meldung) textMitte(s.meldung.text, B / 2, H * 0.3, Math.min(8, (B - 8) / s.meldung.text.length), '#ffe08a', Math.min(1, s.meldung.zeit * 2));
+
+  if (s.blase) sprechblase(s.blase.text, s.p.x, boden - 38);
+
+  if (s.boss) {
+    const def = BOSSE[s.boss.art];
+    const bx = bossX(s.boss.zeit);
+    if (s.abschluss && s.abschluss.art === 'feier') sprechblase(def.ende, bx, Math.max(14, s.boss.anzeigeY - 26), 4);
+    else if (s.bossRuf > 0 && s.uhr > -1.6) sprechblase(def.ruf, bx, 84, 4, '#a82c24');
+  }
+
+  // Ansage am Levelanfang
+  if (s.uhr < 0 && !s.abschluss && modus === 'lauf') {
+    const alpha = Math.min(1, -s.uhr * 2.5);
+    const regel = s.level === 1;
+    const my = regel ? H * 0.24 : H * 0.42;
+    const name = s.boss ? BOSSE[s.boss.art].name : grossName(s.gr.name);
+    const groesse = Math.min(8.5, (B - 10) / name.length);
+    textMitte(s.endlos ? 'DAUERREGEN' : s.boss ? 'BOSS!' : 'LEVEL ' + s.level, B / 2, my - 14, 6, s.boss ? '#ff6a5a' : '#ffffff', alpha);
+    textMitte(s.endlos ? s.gr.w.name : name, B / 2, my, groesse, '#ffe08a', alpha);
+    const tipp = s.gr.neu && !s.endlos ? s.gr.neu : '';
+    zeilenUmbruch(tipp, 30).forEach((z, i) => textMitte(z.toLocaleUpperCase('de-DE'), B / 2, my + 15 + i * 7.5, 4.5, '#ffffff', alpha));
+    if (regel) {
+      malRegelTafel(my + 34, alpha);
+      textMitte(hatTouch ? 'FINGER AUFLEGEN UND ZIEHEN' : 'MAUS ODER PFEILTASTEN', B / 2, my + 90, 4.5, '#5fd0e0', alpha);
+    }
+  }
+  g.setTransform(1, 0, 0, 1, 0, 0);
+}
+
+function naechstesZiel() {
+  const f = fortschritt();
+  const freunde = daten.freunde.filter(x => x.stufe === s.stufeName && x.punkte > s.punkte).sort((a, b) => a.punkte - b.punkte);
+  if (freunde.length && (s.punkte >= f.rekord || freunde[0].punkte < f.rekord)) return { name: grossName(freunde[0].name), wert: freunde[0].punkte };
+  if (f.rekord > s.punkte) return { name: 'REKORD', wert: f.rekord };
+  return { name: 'REKORD', wert: Math.floor(s.punkte) };
+}
+
+function zeigeHud() {
+  const ziel = naechstesZiel();
+  const stand = Math.floor(s.punkte) + '|' + s.level + '|' + ziel.name + '|' + ziel.wert + '|' + s.endlos;
+  if (stand === hudStand) return;
+  hudStand = stand;
+  $('punkte').textContent = zahlKurz(s.punkte);
+  $('levelName').textContent = s.endlos ? 'STUFE' : 'LEVEL';
+  $('levelAnzeige').textContent = s.level;
+  $('zielName').textContent = ziel.name.slice(0, 8);
+  $('zielWert').textContent = zahlKurz(ziel.wert);
+}
+
+function bildAufbau(zeit) {
+  const dt = Math.min((zeit - letzteZeit) / 1000, 0.05);
+  letzteZeit = zeit;
+  if (modus === 'lauf') {
+    vorrat += dt;
+    while (vorrat >= TAKT && modus === 'lauf') { schritt(TAKT); vorrat -= TAKT; }
+    if (modus !== 'lauf') vorrat = 0;
+  } else {
+    malZeit += dt;
+    s.p.wedel += dt;
+  }
+  zeichne();
+  zeigeHud();
+  if (!$('fStart').hidden) malStartKalle();
+  requestAnimationFrame(bildAufbau);
+}
+
+function malStartKalle() {
+  kalleInLeinwand($('startKalle'), { figur: daten.figur, lauf: malZeit * 1.2, wedel: malZeit, blick: Math.sin(malZeit * 1.1), tanzt: true, mund: Math.sin(malZeit * 0.7) > 0.8 ? 'jubel' : 'lachen' });
+}
+
+// --------------------------- Größe ---------------------------
+
+function passeGroesseAn() {
+  const feld = $('feld');
+  const platzB = feld.clientWidth, platzH = feld.clientHeight;
+  if (!platzB || !platzH) return;
+  // Die Breite ist fest, die Höhe richtet sich nach dem Bildschirm: So bleibt nie ein Rand übrig.
+  H = begrenzt(Math.round(B * platzH / platzB), H_MIN, H_MAX);
+  const neu = Math.min(platzB / B, platzH / H);
+  const dpr = Math.min(window.devicePixelRatio || 1, 2.5);
+  bild.style.width = Math.floor(B * neu) + 'px';
+  bild.style.height = Math.floor(H * neu) + 'px';
+  bild.width = Math.floor(B * neu * dpr);
+  bild.height = Math.floor(H * neu * dpr);
+  massstab = bild.width / dpr / B;
+  dichte = dpr;
+  hintergrundCache = {};
+  zeichne();
+}
+
+// --------------------------- Eingabe ---------------------------
+
+const tasten = { links: false, rechts: false };
+const hatTouch = matchMedia('(pointer: coarse)').matches;
+let zielX = null;      // Wohin Kalle läuft: zur Maus oder zum Finger
+let fingerId = null;
+
+function feldX(e) {
+  const rect = bild.getBoundingClientRect();
+  return (e.clientX - rect.left) / massstab;
+}
+
+window.addEventListener('pointerdown', e => {
+  ton.an();
+  if (modus !== 'lauf' || e.target.closest('button, a, input')) return;
+  if (e.pointerType === 'mouse') { zielX = feldX(e); return; }
+  fingerId = e.pointerId;
+  zielX = feldX(e);
+});
+
+window.addEventListener('pointermove', e => {
+  if (modus !== 'lauf') return;
+  if (e.pointerType === 'mouse') { zielX = feldX(e); return; }
+  if (e.pointerId === fingerId) zielX = feldX(e);
+});
+
+function fingerWeg(e) {
+  if (e.pointerId !== fingerId) return;
+  fingerId = null;
+  zielX = null;
+}
+window.addEventListener('pointerup', fingerWeg);
+window.addEventListener('pointercancel', fingerWeg);
+
+window.addEventListener('keydown', e => {
+  if (e.target.tagName === 'INPUT') return;
+  const taste = e.key.toLowerCase();
+  if (taste === 'arrowleft' || taste === 'a') { tasten.links = true; zielX = null; e.preventDefault(); }
+  if (taste === 'arrowright' || taste === 'd') { tasten.rechts = true; zielX = null; e.preventDefault(); }
+  if (taste === 'm' && !e.repeat) schalteTon();
+  if ((taste === 'p' || taste === 'escape') && !e.repeat) {
+    if (modus === 'lauf') pausiere();
+    else if (!$('fPause').hidden) weiter();
+  }
+});
+window.addEventListener('keyup', e => {
+  const taste = e.key.toLowerCase();
+  if (taste === 'arrowleft' || taste === 'a') tasten.links = false;
+  if (taste === 'arrowright' || taste === 'd') tasten.rechts = false;
+});
+window.addEventListener('blur', () => { tasten.links = tasten.rechts = false; zielX = null; fingerId = null; pausiere(); });
+document.addEventListener('visibilitychange', () => { if (document.hidden) pausiere(); });
+
+// --------------------------- Fenster ---------------------------
+
+const FENSTER = ['fStart', 'fLevels', 'fFiguren', 'fListe', 'fHilfe', 'fPause', 'fGeschafft', 'fEnde', 'fTeilen'];
+let vorTeilen = 'fStart';
+
+function zeigeFenster(name) {
+  modus = 'fenster';
+  zielX = null;
+  fingerId = null;
+  musik.stoppe();
+  document.body.classList.remove('imSpiel');
+  document.activeElement && document.activeElement.blur();
+  $('fenster').hidden = false;
+  for (const f of FENSTER) $(f).hidden = f !== name;
+  $('fenster').scrollTop = 0;
+  if (name === 'fStart') baueStart();
+  if (name === 'fLevels') baueLevels();
+  if (name === 'fFiguren') baueFiguren();
+  if (name === 'fListe') baueListe();
+  if (name === 'fPause') zeigeMusikKnopf();
+  if (!hatTouch) {
+    const knopf = $(name).querySelector('.btn.main, .btn');
+    if (knopf) knopf.focus({ preventScroll: true });
+  }
+}
+
+function schliesseFenster() {
+  $('fenster').hidden = true;
+  modus = 'lauf';
+  zielX = null;
+  document.body.classList.add('imSpiel');
+  document.activeElement && document.activeElement.blur();
+  letzteZeit = performance.now();
+  vorrat = 0;
+  musik.starte(s.gr.wNr, !!s.boss);
+}
+
+function baueStufenKnoepfe() {
+  for (const gruppe of document.querySelectorAll('.stufen')) {
+    gruppe.textContent = '';
+    for (const [schluessel, stufe] of Object.entries(STUFEN)) {
+      const k = document.createElement('button');
+      k.type = 'button';
+      k.textContent = stufe.name;
+      k.dataset.stufe = schluessel;
+      k.addEventListener('click', () => waehleStufe(schluessel));
+      gruppe.append(k);
+    }
+  }
+}
+
+function waehleStufe(schluessel) {
+  daten.stufe = schluessel;
+  speichere();
+  s = neuerZustand(1);
+  ladeLevel(1);
+  zeigeStufe();
+  if (!$('fStart').hidden) baueStart();
+  if (!$('fLevels').hidden) baueLevels();
+  if (!$('fListe').hidden) baueListe();
+}
+
+function zeigeStufe() {
+  for (const k of document.querySelectorAll('.stufen button')) {
+    k.setAttribute('aria-pressed', String(k.dataset.stufe === daten.stufe));
+  }
+  for (const t of document.querySelectorAll('.js-stufentext')) t.textContent = STUFEN[daten.stufe].text;
+  for (const t of document.querySelectorAll('.js-rekord')) t.textContent = zahl(fortschritt().rekord);
+}
+
+let offenesDuell = null;
+
+function baueStart() {
+  zeigeStufe();
+  const f = fortschritt();
+  const duell = offenesDuell && offenesDuell.stufe === daten.stufe ? offenesDuell : null;
+  $('duell').hidden = !offenesDuell;
+  if (offenesDuell) {
+    $('duellTitel').textContent = grossName(offenesDuell.name) + ' FORDERT DICH HERAUS';
+    $('duellText').textContent = zahl(offenesDuell.punkte) + ' Punkte bis Level ' + offenesDuell.level + ' auf Stufe ' + STUFEN[offenesDuell.stufe].name + '. Schaffst du mehr?';
+  }
+  $('losKnopf').textContent = duell ? 'Herausforderung annehmen' : f.frei > 1 ? 'Weiter ab Level ' + f.frei : 'Spielen';
+  $('losKnopf').dataset.level = duell ? 1 : f.frei;
+}
+
+function baueLevels() {
+  zeigeStufe();
+  const liste = $('levelListe');
+  liste.textContent = '';
+  const f = fortschritt();
+  for (let w = 0; w < WELTEN.length; w++) {
+    const kopf = document.createElement('p');
+    kopf.className = 'welt';
+    const punkt = document.createElement('i');
+    punkt.style.background = WELTEN[w].farbe;
+    kopf.append(punkt, WELTEN[w].name);
+    liste.append(kopf);
+    const raster = document.createElement('div');
+    raster.className = 'raster';
+    for (let i = 0; i < 6; i++) {
+      const nr = w * 6 + i + 1;
+      const k = document.createElement('button');
+      k.type = 'button';
+      k.className = 'feldchen' + (nr === f.frei ? ' aktuell' : '') + (i === 5 ? ' bossfeld' : '');
+      k.disabled = nr > f.frei;
+      const anzahl = f.sterne[nr] || 0;
+      k.setAttribute('aria-label', 'Level ' + nr + ' ' + LEVEL[nr - 1].name + (k.disabled ? ', noch gesperrt' : ', ' + anzahl + ' von 3 Sternen'));
+      const zahlText = document.createElement('span');
+      zahlText.textContent = nr;
+      const mini = document.createElement('span');
+      mini.className = 'ministerne';
+      for (let n = 0; n < 3; n++) mini.append(sternBild(n < anzahl));
+      k.append(zahlText, mini);
+      k.addEventListener('click', () => starte(nr));
+      raster.append(k);
+    }
+    liste.append(raster);
+  }
+}
+
+function sternBild(an) {
+  const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+  const use = document.createElementNS('http://www.w3.org/2000/svg', 'use');
+  use.setAttribute('href', '#stern');
+  svg.append(use);
+  svg.setAttribute('viewBox', '0 0 24 24');
+  svg.setAttribute('aria-hidden', 'true');
+  if (an) svg.setAttribute('class', 'an');
+  return svg;
+}
+
+function baueFiguren() {
+  const sterne = sterneGesamt();
+  const gesamt = LEVEL.length * 3;
+  $('figurenText').textContent = 'Du hast ' + sterne + ' von ' + gesamt + ' Sternen. Jede Figur spielt sich gleich, sie sieht nur anders aus.';
+  const liste = $('figurenListe');
+  liste.textContent = '';
+  for (const [name, def] of Object.entries(FIGUREN)) {
+    const k = document.createElement('button');
+    k.type = 'button';
+    k.className = 'figurKnopf';
+    const frei = sterne >= def.sterne;
+    k.disabled = !frei;
+    k.setAttribute('aria-pressed', String(daten.figur === name));
+    const leinwand = document.createElement('canvas');
+    leinwand.width = 176;
+    leinwand.height = 144;
+    kalleInLeinwand(leinwand, { figur: name, wedel: 0.5 });
+    const titel = document.createElement('span');
+    titel.textContent = def.name;
+    const info = document.createElement('small');
+    if (frei) info.textContent = daten.figur === name ? 'GEWÄHLT' : 'FREI';
+    else info.append(sternBild(true), String(def.sterne));
+    k.setAttribute('aria-label', def.name + (frei ? '' : ', braucht ' + def.sterne + ' Sterne'));
+    k.append(leinwand, titel, info);
+    k.addEventListener('click', () => {
+      daten.figur = name;
+      speichere();
+      baueFiguren();
+    });
+    liste.append(k);
+  }
+}
+
+function baueListe() {
+  zeigeStufe();
+  const liste = $('liste');
+  liste.textContent = '';
+  const f = fortschritt();
+  const eintraege = daten.freunde.filter(x => x.stufe === daten.stufe).map(x => ({ name: x.name, punkte: x.punkte, freund: x }));
+  eintraege.push({ name: daten.name ? daten.name + ' (du)' : 'Du', punkte: f.rekord, ich: true });
+  eintraege.sort((a, b) => b.punkte - a.punkte);
+  eintraege.forEach((e, i) => {
+    const zeile = document.createElement('li');
+    if (e.ich) zeile.className = 'ich';
+    const platz = document.createElement('span');
+    platz.className = 'platz';
+    platz.textContent = i + 1;
+    const wer = document.createElement('span');
+    wer.className = 'wer';
+    wer.textContent = e.name;
+    const wie = document.createElement('span');
+    wie.className = 'wie';
+    wie.textContent = zahl(e.punkte);
+    zeile.append(platz, wer, wie);
+    if (e.freund) {
+      const weg = document.createElement('button');
+      weg.type = 'button';
+      weg.className = 'weg';
+      weg.textContent = '×';
+      weg.setAttribute('aria-label', e.name + ' aus der Liste entfernen');
+      weg.addEventListener('click', () => {
+        daten.freunde = daten.freunde.filter(x => x !== e.freund);
+        speichere();
+        baueListe();
+      });
+      zeile.append(weg);
+    } else {
+      const platzhalter = document.createElement('span');
+      platzhalter.className = 'platzhalter';
+      zeile.append(platzhalter);
+    }
+    liste.append(zeile);
+  });
+  $('listeTeilen').hidden = f.rekord <= 0;
+}
+
+function starte(levelNr, endlos = false) {
+  ton.an();
+  offenesDuell = null;
+  s = neuerZustand(levelNr, endlos);
+  ladeLevel(levelNr);
+  hudStand = '';
+  schliesseFenster();
+}
+
+function pausiere() {
+  if (modus !== 'lauf' || s.abschluss) return;
+  merkeRekord();
+  $('pausePunkte').textContent = zahl(s.punkte);
+  zeigeFenster('fPause');
+}
+
+function weiter() { schliesseFenster(); }
+
+function zeigeGeschafft() {
+  const sterne = $('geschafftSterne');
+  sterne.textContent = '';
+  sterne.setAttribute('aria-label', s.sterneHier + ' von 3 Sternen');
+  for (let i = 0; i < 3; i++) sterne.append(sternBild(i < s.sterneHier));
+  $('geschafftTitel').textContent = s.boss ? BOSSE[s.boss.art].name + ' BESIEGT' : 'LEVEL ' + s.level + ' GESCHAFFT';
+  $('gMuscheln').textContent = s.muschelnHier + ' / ' + s.gr.muschelnGesamt;
+  $('gKnapp').textContent = s.knappHier + ' mal';
+  $('gBonus').textContent = '+' + zahl(s.bonusText);
+  $('gPunkte').textContent = zahl(s.punkte);
+  $('gFrei').hidden = !s.neuFrei.length;
+  if (s.neuFrei.length) $('gFrei').textContent = 'NEUE FIGUR: ' + grossName(FIGUREN[s.neuFrei[0]].name);
+  let tipp = '';
+  if (s.sterneHier < 3) tipp = 'Noch ' + (3 - s.sterneHier) + (s.sterneHier === 2 ? ' Stern' : ' Sterne') + ' verpasst. Du kannst jedes Level jederzeit noch einmal spielen.';
+  if (s.level % 6 === 0 && s.level % LEVEL.length !== 0) tipp = 'Welt geschafft! Als Nächstes kommst du nach ' + WELTEN[weltIndex(s.level + 1)].name + ', mit vollen Herzen.';
+  if (s.level % LEVEL.length === 0) tipp = 'Kalle hat alle 5 Welten überlebt! Ab jetzt geht es von vorn weiter, nur schneller. Oder probier den Dauerregen.';
+  $('gTipp').textContent = tipp;
+  $('gTipp').hidden = !tipp;
+  const naechstes = LEVEL[kartenIndex(s.level + 1)];
+  $('naechstesKnopf').textContent = 'Level ' + (s.level + 1) + ': ' + naechstes.name;
+  zeigeFenster('fGeschafft');
+}
+
+function zeigeEnde() {
+  merkeRekord();
+  const f = fortschritt();
+  const neu = s.punkte > s.rekordAmStart && s.punkte > 0;
+  $('neuerRekord').hidden = !neu;
+  $('eSpruch').textContent = SPRUECHE.ende[Math.floor(Math.random() * SPRUECHE.ende.length)];
+  $('ePunkte').textContent = zahl(s.punkte);
+  $('eLevelName').textContent = s.endlos ? 'Erreichte Stufe' : 'Erreichtes Level';
+  $('eLevel').textContent = s.level;
+  $('eRekord').textContent = zahl(f.rekord);
+
+  // Was bringt mich zurück ans Spiel? Der nächste Freund oder der eigene Rekord
+  const freunde = daten.freunde.filter(x => x.stufe === daten.stufe);
+  const ueber = freunde.filter(x => x.punkte > s.punkte).sort((a, b) => a.punkte - b.punkte)[0];
+  const eDuell = $('eDuell');
+  eDuell.hidden = false;
+  if (ueber) eDuell.textContent = 'Noch ' + zahl(ueber.punkte - s.punkte + 1) + ' Punkte, dann liegst du vor ' + ueber.name + '.';
+  else if (freunde.length) eDuell.textContent = 'Du liegst vor allen Freunden in deiner Liste. Schick ihnen deinen Link, damit sie nachlegen.';
+  else if (!neu && f.rekord > s.punkte) eDuell.textContent = 'Noch ' + zahl(f.rekord - s.punkte + 1) + ' Punkte bis zu deinem Rekord.';
+  else eDuell.textContent = 'Schick deinen Rekord an Freunde. Wer schlägt dich?';
+
+  const nochmal = $('nochmalKnopf');
+  if (s.endlos) {
+    nochmal.textContent = 'Nochmal Dauerregen';
+    nochmal.dataset.level = 1;
+    nochmal.dataset.endlos = '1';
+    $('neuKnopf').hidden = true;
+  } else {
+    const ab = Math.min(s.level, LEVEL.length);
+    nochmal.textContent = ab > 1 ? 'Weiter ab Level ' + ab : 'Nochmal';
+    nochmal.dataset.level = ab;
+    nochmal.dataset.endlos = '';
+    $('neuKnopf').hidden = ab <= 1;
+  }
+  $('endeTeilen').hidden = f.rekord <= 0;
+  zeigeFenster('fEnde');
+}
+
+// --------------------------- Freunde herausfordern ---------------------------
+
+function reinerName(text) {
+  // Nur sichtbare Zeichen und nicht zu lang: Der Name kommt aus einem fremden Link
+  const sauber = String(text == null ? '' : text).normalize('NFC').replace(/[\p{C}<>]/gu, '').trim();
+  return Array.from(sauber).slice(0, 12).join('');
+}
+
+function linkBauen() {
+  const f = fortschritt();
+  const teile = new URLSearchParams({
+    name: reinerName($('nameFeld').value) || 'Ein Freund',
+    punkte: f.rekord,
+    level: f.rekordLevel || 1,
+    stufe: daten.stufe
+  });
+  return SPIEL_ADRESSE + '#' + teile.toString();
+}
+
+function oeffneTeilen(zurueck) {
+  vorTeilen = zurueck;
+  const f = fortschritt();
+  $('nameFeld').value = daten.name;
+  $('teilenStatus').textContent = '';
+  $('linkFeld').hidden = true;
+  $('teilenText').textContent = 'Du teilst deinen Rekord: ' + zahl(f.rekord) + ' Punkte auf Stufe ' + STUFEN[daten.stufe].name + '. Wer den Link öffnet, sieht dein Ergebnis und kann es angreifen.';
+  zeigeFenster('fTeilen');
+}
+
+async function teile() {
+  const f = fortschritt();
+  daten.name = reinerName($('nameFeld').value);
+  speichere();
+  const adresse = linkBauen();
+  const text = 'Ich habe ' + zahl(f.rekord) + ' Punkte in Krabbenalarm (Level ' + (f.rekordLevel || 1) + ', Stufe ' + STUFEN[daten.stufe].name + '). Schaffst du mehr?';
+  const status = $('teilenStatus');
+  status.textContent = '';
+  try {
+    if (navigator.share) {
+      await navigator.share({ title: 'Krabbenalarm', text, url: adresse });
+      return;
+    }
+    await navigator.clipboard.writeText(text + ' ' + adresse);
+    status.textContent = 'Link kopiert! Füge ihn jetzt im Chat ein.';
+  } catch (error) {
+    if (error.name === 'AbortError') return;       // Teilen wurde selbst abgebrochen
+    const feld = $('linkFeld');
+    feld.value = adresse;
+    feld.hidden = false;
+    feld.select();
+    status.textContent = 'Kopiere diesen Link:';
+  }
+}
+
+// Wurde das Spiel über den Link eines Freundes geöffnet?
+function leseHerausforderung() {
+  if (location.hash.length < 2) return;
+  const teile = new URLSearchParams(location.hash.slice(1));
+  const name = reinerName(teile.get('name'));
+  const punkte = Number(teile.get('punkte'));
+  const level = Number(teile.get('level'));
+  const stufe = teile.get('stufe');
+  try { history.replaceState(null, '', location.pathname + location.search); } catch (error) {}
+  if (!name || !Number.isInteger(punkte) || punkte < 1 || punkte > 99999999) return;
+  if (!Number.isInteger(level) || level < 1 || level > 9999) return;
+  if (!Object.prototype.hasOwnProperty.call(STUFEN, stufe)) return;
+
+  const bekannt = daten.freunde.find(f => f.name === name && f.stufe === stufe);
+  if (bekannt) bekannt.punkte = Math.max(bekannt.punkte, punkte);
+  else daten.freunde.push({ name, punkte, level, stufe });
+  daten.freunde.sort((a, b) => b.punkte - a.punkte);
+  daten.freunde = daten.freunde.slice(0, 30);
+  daten.stufe = stufe;
+  speichere();
+  offenesDuell = { name, punkte, level, stufe };
+}
+
+// --------------------------- Knöpfe ---------------------------
+
+function schalteTon() {
+  daten.ton = !daten.ton;
+  speichere();
+  zeigeTon();
+  ton.an();
+  ton.muschel();
+}
+function zeigeTon() {
+  $('tonKnopf').classList.toggle('stumm', !daten.ton);
+  $('tonKnopf').setAttribute('aria-label', daten.ton ? 'Ton ausschalten' : 'Ton einschalten');
+}
+function zeigeMusikKnopf() { $('pauseMusik').textContent = daten.musik ? 'Musik ausschalten' : 'Musik einschalten'; }
+
+function zumMenue() {
+  merkeRekord();
+  s = neuerZustand(1);
+  ladeLevel(1);
+  hudStand = '';
+  zeigeFenster('fStart');
+}
+
+for (const k of document.querySelectorAll('[data-oeffne]')) {
+  k.addEventListener('click', () => {
+    if (k.dataset.oeffne === 'fStart' && !$('fEnde').hidden) { zumMenue(); return; }
+    zeigeFenster(k.dataset.oeffne);
+  });
+}
+$('losKnopf').addEventListener('click', e => starte(Number(e.currentTarget.dataset.level) || 1));
+$('endlosKnopf').addEventListener('click', () => starte(1, true));
+$('tonKnopf').addEventListener('click', schalteTon);
+$('pauseKnopf').addEventListener('click', () => { ton.an(); pausiere(); });
+$('weiterKnopf').addEventListener('click', weiter);
+$('pauseMusik').addEventListener('click', () => { daten.musik = !daten.musik; speichere(); zeigeMusikKnopf(); });
+$('pauseNeu').addEventListener('click', () => {
+  // Punkte aus dem abgebrochenen Versuch zählen nicht weiter, sonst könnte man sie endlos sammeln
+  merkeRekord();
+  starte(s.endlos ? 1 : s.level, s.endlos);
+});
+$('pauseMenue').addEventListener('click', zumMenue);
+$('geschafftMenue').addEventListener('click', zumMenue);
+$('naechstesKnopf').addEventListener('click', () => {
+  ladeLevel(s.level + 1);
+  // Eine neue Welt beginnt mit vollen Herzen
+  if (kartenIndex(s.level) % 6 === 0) s.herzen = Math.max(s.herzen, s.stufe.herzen);
+  schliesseFenster();
+});
+$('nochmalKnopf').addEventListener('click', e => starte(Number(e.currentTarget.dataset.level) || 1, e.currentTarget.dataset.endlos === '1'));
+$('neuKnopf').addEventListener('click', () => starte(1));
+$('endeTeilen').addEventListener('click', () => oeffneTeilen('fEnde'));
+$('listeTeilen').addEventListener('click', () => oeffneTeilen('fListe'));
+$('teilenKnopf').addEventListener('click', teile);
+$('teilenZurueck').addEventListener('click', () => zeigeFenster(vorTeilen));
+
+// --------------------------- Start ---------------------------
+
+function legendeBild(leinwand, malen) {
+  const c = leinwand.getContext('2d');
+  const e = leinwand.width / 44;
+  c.setTransform(e, 0, 0, e, 0, 0);
+  malen(c);
+  c.setTransform(1, 0, 0, 1, 0, 0);
+}
+
+function baueLegende() {
+  const regel = $('legendeRegel');
+  const eintraege = [
+    ['Leuchtender Kreis: einsammeln!', c => malSammel(c, { art: 'muschel', x: 22, y: 22, liegt: 0 })],
+    ['Goldener Kreis: Stern, unbedingt holen!', c => malSammel(c, { art: 'stern', x: 22, y: 22, liegt: 0 })],
+    ['Roter Schein: ausweichen!', c => c.drawImage(DINGE.kiste.bild, 7, 7, 30, 30)],
+    ['Roter Fleck am Boden: hier landet gleich etwas', c => oval(c, 22, 23, 15, 4, 'rgba(225, 20, 20, 0.75)')]
+  ];
+  for (const [text, malen] of eintraege) {
+    const zeile = document.createElement('li');
+    const leinwand = document.createElement('canvas');
+    leinwand.width = leinwand.height = 132;
+    legendeBild(leinwand, malen);
+    const span = document.createElement('span');
+    span.textContent = text;
+    zeile.append(leinwand, span);
+    regel.append(zeile);
+  }
+  const hilfen = $('legendeHilfen');
+  for (const [typ, def] of Object.entries(HILFEN)) {
+    const zeile = document.createElement('li');
+    const leinwand = document.createElement('canvas');
+    leinwand.width = leinwand.height = 132;
+    legendeBild(leinwand, c => malSammel(c, { art: 'hilfe', hilfe: typ, x: 22, y: 22, liegt: 0 }));
+    const text = document.createElement('span');
+    text.textContent = def.text;
+    zeile.append(leinwand, text);
+    hilfen.append(zeile);
+  }
+  const weltenListe = $('weltenListe');
+  for (const w of WELTEN) {
+    const zeile = document.createElement('li');
+    const inhalt = document.createElement('span');
+    const fett = document.createElement('strong');
+    fett.textContent = w.name.charAt(0) + w.name.slice(1).toLocaleLowerCase('de-DE') + ': ';
+    inhalt.append(fett, w.text);
+    zeile.append(inhalt);
+    weltenListe.append(zeile);
+  }
+  $('hilfeSteuerung').textContent = hatTouch
+    ? 'Leg den Finger irgendwo aufs Spielfeld: Kalle flitzt dorthin und folgt ihm nach links und rechts.'
+    : 'Kalle folgt deiner Maus. Oder du nimmst die Pfeiltasten oder A und D. P ist Pause, M ist Ton.';
+}
+
+leseHerausforderung();
+s = neuerZustand(1);
+ladeLevel(1);
+baueStufenKnoepfe();
+baueLegende();
+zeigeTon();
+zeigeFenster('fStart');
+new ResizeObserver(passeGroesseAn).observe($('feld'));
+passeGroesseAn();
+if (document.fonts && document.fonts.load) document.fonts.load('10px "Press Start 2P"');
+requestAnimationFrame(zeit => { letzteZeit = zeit; bildAufbau(zeit); });
+
+if ('serviceWorker' in navigator && window.isSecureContext && location.protocol !== 'file:') {
+  navigator.serviceWorker.register('sw.js').catch(() => { /* Das Spiel läuft auch so */ });
+}
+</script>
+</body>
+</html>
